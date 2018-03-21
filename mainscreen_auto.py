@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainscreen.ui'
 #
-# Created by: PyQt5 UI code generator 5.6
+# Created by: PyQt5 UI code generator 5.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -15,7 +15,7 @@ class Ui_MainScreen(object):
         self.centralWidget = QtWidgets.QWidget(MainScreen)
         self.centralWidget.setObjectName("centralWidget")
         self.pbNewAccount = QtWidgets.QPushButton(self.centralWidget)
-        self.pbNewAccount.setGeometry(QtCore.QRect(320, 190, 191, 41))
+        self.pbNewAccount.setGeometry(QtCore.QRect(320, 190, 185, 41))
         self.pbNewAccount.setStyleSheet("QPushButton {\n"
 "   background-color: #d35400;\n"
 "    border: 1px solid #d35400;\n"

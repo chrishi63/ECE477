@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'datacollection.ui'
 #
-# Created by: PyQt5 UI code generator 5.6
+# Created by: PyQt5 UI code generator 5.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -28,7 +28,7 @@ class Ui_DataCollection(object):
         self.pbReturn.setText("")
         self.pbReturn.setObjectName("pbReturn")
         self.pbSendData = QtWidgets.QPushButton(self.centralwidget)
-        self.pbSendData.setGeometry(QtCore.QRect(330, 370, 141, 41))
+        self.pbSendData.setGeometry(QtCore.QRect(310, 370, 181, 41))
         self.pbSendData.setStyleSheet("QPushButton {\n"
 "    border: 1px solid #d35400;\n"
 "    color: #d35400;\n"
@@ -44,7 +44,7 @@ class Ui_DataCollection(object):
 "")
         self.pbSendData.setObjectName("pbSendData")
         self.pbHeartRate = QtWidgets.QPushButton(self.centralwidget)
-        self.pbHeartRate.setGeometry(QtCore.QRect(249, 220, 131, 22))
+        self.pbHeartRate.setGeometry(QtCore.QRect(239, 220, 161, 22))
         self.pbHeartRate.setStyleSheet("QPushButton {\n"
 "    border: 1px solid #d35400;\n"
 "    color: #d35400;\n"
@@ -60,7 +60,7 @@ class Ui_DataCollection(object):
 "")
         self.pbHeartRate.setObjectName("pbHeartRate")
         self.pbGSR = QtWidgets.QPushButton(self.centralwidget)
-        self.pbGSR.setGeometry(QtCore.QRect(249, 260, 131, 22))
+        self.pbGSR.setGeometry(QtCore.QRect(239, 260, 161, 22))
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(211, 84, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
@@ -105,7 +105,7 @@ class Ui_DataCollection(object):
 "")
         self.pbGSR.setObjectName("pbGSR")
         self.pbBodyTemp = QtWidgets.QPushButton(self.centralwidget)
-        self.pbBodyTemp.setGeometry(QtCore.QRect(249, 300, 131, 22))
+        self.pbBodyTemp.setGeometry(QtCore.QRect(239, 300, 161, 22))
         self.pbBodyTemp.setStyleSheet("QPushButton {\n"
 "    border: 1px solid #d35400;\n"
 "    color: #d35400;\n"
@@ -121,7 +121,7 @@ class Ui_DataCollection(object):
 "")
         self.pbBodyTemp.setObjectName("pbBodyTemp")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(320, 150, 161, 41))
+        self.label.setGeometry(QtCore.QRect(290, 140, 231, 51))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label.setFont(font)
@@ -131,7 +131,7 @@ class Ui_DataCollection(object):
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(420, 220, 47, 16))
+        self.label_2.setGeometry(QtCore.QRect(470, 220, 47, 16))
         self.label_2.setAutoFillBackground(True)
         self.label_2.setStyleSheet("QLabel {\n"
 "    color: rgb(90, 90, 90);\n"
@@ -139,7 +139,7 @@ class Ui_DataCollection(object):
         self.label_2.setText("")
         self.label_2.setObjectName("label_2")
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(420, 260, 47, 21))
+        self.label_3.setGeometry(QtCore.QRect(470, 260, 47, 21))
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(90, 90, 90))
         brush.setStyle(QtCore.Qt.SolidPattern)
@@ -175,24 +175,24 @@ class Ui_DataCollection(object):
         self.label_3.setText("")
         self.label_3.setObjectName("label_3")
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
-        self.label_4.setGeometry(QtCore.QRect(420, 300, 47, 21))
+        self.label_4.setGeometry(QtCore.QRect(470, 300, 47, 21))
         self.label_4.setStyleSheet("QLabel {\n"
 "    color: rgb(90, 90, 90);\n"
 "}")
         self.label_4.setText("")
         self.label_4.setObjectName("label_4")
         self.line_2 = QtWidgets.QFrame(self.centralwidget)
-        self.line_2.setGeometry(QtCore.QRect(410, 240, 118, 3))
+        self.line_2.setGeometry(QtCore.QRect(430, 240, 118, 3))
         self.line_2.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_2.setObjectName("line_2")
         self.line_3 = QtWidgets.QFrame(self.centralwidget)
-        self.line_3.setGeometry(QtCore.QRect(410, 280, 118, 3))
+        self.line_3.setGeometry(QtCore.QRect(430, 280, 118, 3))
         self.line_3.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_3.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_3.setObjectName("line_3")
         self.line_4 = QtWidgets.QFrame(self.centralwidget)
-        self.line_4.setGeometry(QtCore.QRect(410, 320, 118, 3))
+        self.line_4.setGeometry(QtCore.QRect(430, 320, 118, 3))
         self.line_4.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_4.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_4.setObjectName("line_4")

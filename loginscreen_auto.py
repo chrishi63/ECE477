@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'loginscreen.ui'
 #
-# Created by: PyQt5 UI code generator 5.6
+# Created by: PyQt5 UI code generator 5.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -20,7 +20,7 @@ class Ui_MainWindow(object):
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.txteditUserName = QtWidgets.QLineEdit(self.centralwidget)
-        self.txteditUserName.setGeometry(QtCore.QRect(320, 230, 181, 21))
+        self.txteditUserName.setGeometry(QtCore.QRect(350, 230, 181, 21))
         self.txteditUserName.setStyleSheet("QLineEdit {\n"
 "    border-bottom: 1px solid #e5982c;\n"
 "    border-radius: 0px;\n"
@@ -39,7 +39,7 @@ class Ui_MainWindow(object):
 "}")
         self.label.setObjectName("label")
         self.txteditPassword = QtWidgets.QLineEdit(self.centralwidget)
-        self.txteditPassword.setGeometry(QtCore.QRect(320, 290, 181, 21))
+        self.txteditPassword.setGeometry(QtCore.QRect(350, 290, 181, 21))
         self.txteditPassword.setStyleSheet("QLineEdit {\n"
 "    border-bottom: 1px solid #e5982c;\n"
 "    border-radius: 0px;\n"
@@ -49,13 +49,13 @@ class Ui_MainWindow(object):
 "}")
         self.txteditPassword.setObjectName("txteditPassword")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(240, 230, 61, 16))
+        self.label_2.setGeometry(QtCore.QRect(240, 230, 91, 31))
         self.label_2.setStyleSheet("QLabel {\n"
 "    color: rgb(90, 90, 90);\n"
 "}")
         self.label_2.setObjectName("label_2")
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(240, 290, 47, 14))
+        self.label_3.setGeometry(QtCore.QRect(240, 290, 91, 31))
         self.label_3.setStyleSheet("QLabel {\n"
 "    color: rgb(90, 90, 90);\n"
 "}")
