@@ -17,6 +17,7 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
     def createNewAccount(self):
         #takes user to new account screen
 ##        self.createAccount.showFullScreen()
+        print("navigating to new account screen")
         self.createAccount.show()
         self.hide()
 ##################################################################  
@@ -28,6 +29,7 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
     def login(self):
         #takes user to login screen
 ##        self.loginScreen.showFullScreen()
+        print("navigating to login  screen")
         self.loginScreen.show()
         self.hide()
 ##################################################################
