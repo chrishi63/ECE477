@@ -83,11 +83,7 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
         print("Creating main screen")
         super(self.__class__, self).__init__()
         self.setupUi(self)
-        renderer = PyQt5.QtSvg.QSvgRenderer('/home/pi/Documents/Health Portal/logo1.svg')
-        self.label.resize(renderer.defaultSize())
-        painter = PyQt5.QtGui.QPainter(self.label)
-        painter.restore()
-        renderer.render(painter)
+        
         # Create Other Screens
         self.createAccount = createAccount.CreateAccountScreen()
         self.loginScreen = login.LoginScreen()
