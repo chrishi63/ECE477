@@ -3,20 +3,19 @@ import sys
 import mysql.connector
 
 class connectionConfigurations():
-    def __init__(self, user='senior477', password='SET56?ra', host=\
-                 'mysql.stackcp.com',database='senior-33352e44',port='50857'):
+    def __init__(self, user='achhetri', password='aka619ASH', host=\
+                 'mmydb.ics.purdue.edu',database='achhetri'):
         self.config = {
             'user': user,
             'password' : password,
             'host' : host,
             'database' : database,
-            'port' : port
         }
 
 class serverConnection():
     def __init__(self, configurations):
         self.configurations = configurations
-    def startConnection():
+    def startConnection(self):
         try:
             self.connection = mysql.connector.connect(**self.configurations.config)
         except mysql.connector.Error as err:
@@ -32,16 +31,15 @@ class serverConnection():
                                         
     def closeConnection():
         self.connection.close()
-    def checkLoginCredentials(usernameToCheck, passwordToCheck):
-        query = ("SELECT * FROM users;") #change table name
+    def checkLoginCredentials(self, usernameToCheck, passwordToCheck):
+        loginString = 'SELECT user_id FROM users WHERE user_name = \'' + \
+                      str(usernameToCheck) + '\' and password = \'' + \
+                      str(passwordToCheck) + '\';' 
+        query = (loginString) #change table name
         self.cur.execute(query)
-        for {table elements} in cur:
-            if username is usernameToCheck and password is passwordToCheck:
-                self.user = username
-                return True
         return False
 
-    def createNewUserAccount(name, ssn, username, password):
+    '''def createNewUserAccount(name, ssn, username, password):
         dateQuery = ("SELECT CURDATE();")
         self.cur.execute(dateQuery)
         date = self.cur[0][0]
@@ -62,8 +60,8 @@ class serverConnection():
                  "(body temperature, date)"
                  "VALUES ('" + bodyTemp + "', " + date "');")
         self.cur.execute(query)
-        self.connection.commit()
-
+        self.connection.commit()'''
+    
     def addGSR(gsr):
         pass
     def addHeartRate(heartRate):

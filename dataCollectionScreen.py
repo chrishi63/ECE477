@@ -11,6 +11,7 @@ import PyQt5
 from PyQt5.QtWidgets import *
 
 import datacollection_auto as dataUi
+import serverConnectionController as server
 
 class DataCollectionScreen(QMainWindow, dataUi.Ui_DataCollection):
 ############################################################################################
@@ -30,6 +31,7 @@ class DataCollectionScreen(QMainWindow, dataUi.Ui_DataCollection):
 ############################################################################################
     def sendingDataToServerFails(self):
         #send data to server and return 0 if successful, 1 if unsuccessful
+        
         return 0
 ############################################################################################    
     def sendDataByteThroughI2C(self, address, dataByte):
