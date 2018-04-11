@@ -82,5 +82,5 @@ class Ui_MainScreen(object):
         MainScreen.setWindowTitle(_translate("MainScreen", "MainScreen"))
         self.pbNewAccount.setText(_translate("MainScreen", "Setup New Account"))
         self.pbLogin.setText(_translate("MainScreen", "Login"))
-        self.label.setText(_translate("MainScreen", "<html><head/><body><p><img src=\":/logo.png\" width = \"300\" height = \"150\"/></p></body></html>"))
+        self.label.setText(_translate("MainScreen", "<html><head/><body><p><img src=\"logo.png\" width = \"300\" height = \"150\"/></p></body></html>"))
 
