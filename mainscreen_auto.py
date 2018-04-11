@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'mainscreen.ui'
+# Form implementation generated from reading ui file 'mainScreen.ui'
 #
 # Created by: PyQt5 UI code generator 5.10.1
 #
@@ -50,19 +50,6 @@ class Ui_MainScreen(object):
 "")
         self.pbLogin.setFlat(True)
         self.pbLogin.setObjectName("pbLogin")
-        self.label = QtWidgets.QLabel(self.centralWidget)
-        self.label.setGeometry(QtCore.QRect(0, 0, 231, 101))
-        font = QtGui.QFont()
-        font.setPointSize(24)
-        font.setBold(False)
-        font.setWeight(50)
-        self.label.setFont(font)
-        self.label.setStyleSheet("QLabel{\n"
-"    padding: 2px;\n"
-"    border-image: url(:/logo1.svg) 0 0 0 0 stretch stretch;\n"
-"}")
-        self.label.setText("")
-        self.label.setObjectName("label")
         self.batteryIndicator = QtWidgets.QProgressBar(self.centralWidget)
         self.batteryIndicator.setGeometry(QtCore.QRect(670, 40, 101, 21))
         self.batteryIndicator.setProperty("value", 24)
@@ -72,6 +59,9 @@ class Ui_MainScreen(object):
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
+        self.label = QtWidgets.QLabel(self.centralWidget)
+        self.label.setGeometry(QtCore.QRect(0, -70, 741, 391))
+        self.label.setObjectName("label")
         MainScreen.setCentralWidget(self.centralWidget)
         self.menuBar = QtWidgets.QMenuBar(MainScreen)
         self.menuBar.setGeometry(QtCore.QRect(0, 0, 800, 21))
@@ -92,4 +82,5 @@ class Ui_MainScreen(object):
         MainScreen.setWindowTitle(_translate("MainScreen", "MainScreen"))
         self.pbNewAccount.setText(_translate("MainScreen", "Setup New Account"))
         self.pbLogin.setText(_translate("MainScreen", "Login"))
+        self.label.setText(_translate("MainScreen", "<html><head/><body><p><img src=\":/logo.png\" width = \"500\" height = \"250\"/></p></body></html>"))
 
