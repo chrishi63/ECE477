@@ -60,7 +60,7 @@ class Ui_MainScreen(object):
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.label = QtWidgets.QLabel(self.centralWidget)
-        self.label.setGeometry(QtCore.QRect(0, -70, 741, 391))
+        self.label.setGeometry(QtCore.QRect(0, 0, 311, 151))
         self.label.setObjectName("label")
         MainScreen.setCentralWidget(self.centralWidget)
         self.menuBar = QtWidgets.QMenuBar(MainScreen)
@@ -82,5 +82,5 @@ class Ui_MainScreen(object):
         MainScreen.setWindowTitle(_translate("MainScreen", "MainScreen"))
         self.pbNewAccount.setText(_translate("MainScreen", "Setup New Account"))
         self.pbLogin.setText(_translate("MainScreen", "Login"))
-        self.label.setText(_translate("MainScreen", "<html><head/><body><p><img src=\":/logo.png\" width = \"500\" height = \"250\"/></p></body></html>"))
+        self.label.setText(_translate("MainScreen", "<html><head/><body><p><img src=\":/logo.png\" width = \"300\" height = \"150\"/></p></body></html>"))
 
