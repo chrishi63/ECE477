@@ -213,7 +213,7 @@ class Ui_DataCollection(object):
         DataCollection.setWindowTitle(_translate("DataCollection", "MainWindow"))
         self.pbSendData.setText(_translate("DataCollection", "Send Data To Server"))
         self.pbHeartRate.setText(_translate("DataCollection", "Heart Rate"))
-        self.pbGSR.setText(_translate("DataCollection", "Galvanic Skin Response"))
+        self.pbGSR.setText(_translate("DataCollection", "Galvanic Response"))
         self.pbBodyTemp.setText(_translate("DataCollection", "Body Temperature"))
         self.label.setText(_translate("DataCollection", "Collect Sensor Data"))
 

@@ -4,7 +4,7 @@ import mysql.connector
 
 class connectionConfigurations():
     def __init__(self, user='achhetri', password='aka619ASH', host=\
-                 'mmydb.ics.purdue.edu',database='achhetri'):
+                 'mydb.ics.purdue.edu',database='achhetri'):
         self.config = {
             'user': user,
             'password' : password,
@@ -26,10 +26,10 @@ class serverConnection():
             else:
                 print(err)
         else:
-            self.connection.close()
-        self.cur = self.connection.cursor()
+            #self.connection.close()
+            self.cur = self.connection.cursor()
                                         
-    def closeConnection():
+    def closeConnection(self):
         self.connection.close()
     def checkLoginCredentials(self, usernameToCheck, passwordToCheck):
         loginString = 'SELECT user_id FROM users WHERE user_name = \'' + \
@@ -37,21 +37,26 @@ class serverConnection():
                       str(passwordToCheck) + '\';' 
         query = (loginString) #change table name
         self.cur.execute(query)
+
+        for val in self.cur:
+            print(val[0])
+            if val[0]:
+                return True
+        #print(self.cur[0])
         return False
 
-    '''def createNewUserAccount(name, ssn, username, password):
-        dateQuery = ("SELECT CURDATE();")
-        self.cur.execute(dateQuery)
-        date = self.cur[0][0]
-        query = ("INSERT INTO users "
-                 "(name, ssn, username, password)"
-                 "VALUES ('" + name + "', " + ssn "');")
-        self.cur.exectue(query)
+    def createNewUserAccount(self, firstName, lastName, ssn, username, password):
+        newAccountString = 'INSERT INTO users(first_name, last_name, ssn, \
+user_name, password) VALUES' + '(\'' + firstName + '\', \'' + lastName + \
+        '\', \'' + ssn + '\', \'' + username + '\', \'' + password + '\');'
+
+        query = (newAccountString)
+        self.cur.execute(query)
         self.connection.commit()
         self.user = username
         return True
 
-    def addBodyTemp(bodyTemp):
+    '''def addBodyTemp(bodyTemp):
         #go to table for self.user
         dateQuery = ("SELECT CURDATE();")
         self.cur.execute(dateQuery)

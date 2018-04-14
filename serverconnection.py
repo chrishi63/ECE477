@@ -17,7 +17,7 @@ cur = cnx.cursor()
 
 query = ("SELECT CONCAT(first_name, ' ', last_name) AS 'Patient Name', "
    "CASE "
-       "WHEN user_name='ccoluson99' THEN 'ccoluson989' "
+       "WHEN user_name='chrishi63' THEN 'ccoluson989' "
        "ELSE '' "
    "END AS user_name, "
    "heart AS 'Heart Rate', "
@@ -25,7 +25,7 @@ query = ("SELECT CONCAT(first_name, ' ', last_name) AS 'Patient Name', "
    "sweat AS 'Sweat Response' "
    "FROM users "
    "INNER JOIN datasets ON users.user_id = datasets.user_id "
-   "WHERE user_name = 'ccoluson99' AND password = '123456';")
+   "WHERE user_name = 'chrishi63' AND password = '1234';")
 
 cur.execute(query)
 

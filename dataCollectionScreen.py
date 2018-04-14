@@ -1,6 +1,6 @@
 #!usr/bin/python
 import sys
-# For i2c: (GPIO8 (pin 3) -> SDA GPI09 (pin 5) -> SCL)
+#For i2c: (GPIO8 (pin 3) -> SDA GPI09 (pin 5) -> SCL)
 import smbus
 import time
 bus = smbus.SMBus(1) #(1) because using I2C1 port
@@ -197,8 +197,8 @@ Would you like to proceed?")
         self.heartRate = 0
         self.gsr = 0
         self.bodyTemp = 0
-##        self.stmAddressByte = 0x40 #<- change this
-        self.stmAddressByte = 0
+        self.stmAddressByte = 0x10 #<- change this
+##        self.stmAddressByte = 0
         self.heartRateSignal = 2
         self.gsrSignal = 3
         self.bodyTempSignal = 4
