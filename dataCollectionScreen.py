@@ -32,7 +32,8 @@ class DataCollectionScreen(QMainWindow, dataUi.Ui_DataCollection):
             emptyMeasurementsPrompt.setInformativeText("Please take all measurements \
 before attempting to send data to server")        
             emptyMeasurementsPrompt.show()
-            return
+            print("empty")
+            return False
         if (self.sendingDataToServerFails()):
             # make a popup window that send data sending failed
             clearDataPrompt = QMessageBox()
@@ -41,6 +42,7 @@ before attempting to send data to server")
             #clearDataPrompt.setInformativeText(informativeText)        
             #clearDataPrompt.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
             clearDataPrompt.show()
+            print("failed sending data to server")
             return False
         self.clearData()
         return True

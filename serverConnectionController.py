@@ -74,11 +74,13 @@ class serverConnection():
         return True
     
     ############################################################################################
-    def addSensorData(bodyTemp, gsr, heartRate):
+    def addSensorData(self, bodyTemp, gsr, heartRate):
         #go to table for self.user
         dateQuery = ("SELECT CURDATE();")
         self.cur.execute(dateQuery)
-        date = self.cur[0][0]
+        for value in self.cur:
+            date = value[0]
+            print(date)
         insertQuery = ('INSERT INTO datasets(heart,sweat,temp,time,user_id) \
                         VALUES (' + heartRate + ',' + gsr + ',' + bodyTemp + ',' + \
                        '\'' + date + '\',(SELECT user_id FROM users WHERE user_name = \''+\

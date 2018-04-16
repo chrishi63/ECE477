@@ -17,21 +17,21 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
 ##################################################################
     def createNewAccount(self):
         #takes user to new account screen
-        self.createAccount.showFullScreen()
+##        self.createAccount.showFullScreen()
         print("navigating to new account screen")
-##        self.createAccount.show()
+        self.createAccount.show()
         self.hide()
 ##################################################################  
     def hideCreateScreen(self):
-        self.showFullScreen()
-##        self.show()
+##        self.showFullScreen()
+        self.show()
         self.createAccount.hide()
 ##################################################################
     def login(self):
         #takes user to login screen
-        self.loginScreen.showFullScreen()
+##        self.loginScreen.showFullScreen()
         print("navigating to login  screen")
-##        self.loginScreen.show()
+        self.loginScreen.show()
         self.hide()
 ##################################################################
     def attemptLogin(self):
@@ -64,13 +64,13 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
 ##################################################################
     def hideLoginScreen(self):
         print("hide login")
-        self.showFullScreen()
-##        self.show()
+##        self.showFullScreen()
+        self.show()
         self.loginScreen.hide()
 ##################################################################
     def showDataCollectionScreen(self):
-        self.dataCollectionScreen.showFullScreen()
-##        self.dataCollectionScreen.show()
+##        self.dataCollectionScreen.showFullScreen()
+        self.dataCollectionScreen.show()
         self.loginScreen.hide()
         self.loginScreen.txteditUserName.setText("")
         self.loginScreen.txteditPassword.setText("")
@@ -103,8 +103,8 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
             return 1
 ##################################################################                                                             
     def hideDataCollectionScreen(self):
-        self.showFullScreen()
-##        self.show()
+##        self.showFullScreen()
+        self.show()
         self.dataCollectionScreen.clearData()
         self.dataCollectionScreen.hide()
 ##################################################################
@@ -136,8 +136,8 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
 def main():
     app = QApplication(sys.argv)
     form = MainScreen()
-##    form.show()
-    form.showFullScreen()
+    form.show()
+##    form.showFullScreen()
     sys.exit(app.exec_())
 ##################################################################
 if __name__ == "__main__":
