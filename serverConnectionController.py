@@ -11,10 +11,16 @@ class connectionConfigurations():
             'host' : host,
             'database' : database,
         }
-
+    
+################################################################################################
 class serverConnection():
+    ############################################################################################
     def __init__(self, configurations):
         self.configurations = configurations
+        self.userName = ''
+        self.password = ''
+    
+    ############################################################################################
     def startConnection(self):
         try:
             self.connection = mysql.connector.connect(**self.configurations.config)
@@ -28,9 +34,17 @@ class serverConnection():
         else:
             #self.connection.close()
             self.cur = self.connection.cursor()
-                                        
+    
+    ############################################################################################
     def closeConnection(self):
         self.connection.close()
+    
+    ############################################################################################
+    def clearCredentials(self):
+        self.userName = ''
+        self.password = ''
+    
+    ############################################################################################
     def checkLoginCredentials(self, usernameToCheck, passwordToCheck):
         loginString = 'SELECT user_id FROM users WHERE user_name = \'' + \
                       str(usernameToCheck) + '\' and password = \'' + \
@@ -41,13 +55,16 @@ class serverConnection():
         for val in self.cur:
             print(val[0])
             if val[0]:
+                self.userName = usernameToCheck
+                self.password = passwordToCheck
                 return True
-        #print(self.cur[0])
         return False
-
+    
+    ############################################################################################
     def createNewUserAccount(self, firstName, lastName, ssn, username, password):
         newAccountString = 'INSERT INTO users(first_name, last_name, ssn, \
-user_name, password) VALUES' + '(\'' + firstName + '\', \'' + lastName + \
+                            user_name, password) VALUES' + '(\'' \
+                            + firstName + '\', \'' + lastName + \
         '\', \'' + ssn + '\', \'' + username + '\', \'' + password + '\');'
 
         query = (newAccountString)
@@ -55,20 +72,18 @@ user_name, password) VALUES' + '(\'' + firstName + '\', \'' + lastName + \
         self.connection.commit()
         self.user = username
         return True
-
-    '''def addBodyTemp(bodyTemp):
+    
+    ############################################################################################
+    def addSensorData(bodyTemp, gsr, heartRate):
         #go to table for self.user
         dateQuery = ("SELECT CURDATE();")
         self.cur.execute(dateQuery)
         date = self.cur[0][0]
-        quere = ("INSERT INTO tablename "
-                 "(body temperature, date)"
-                 "VALUES ('" + bodyTemp + "', " + date "');")
+        insertQuery = ('INSERT INTO datasets(heart,sweat,temp,time,user_id) \
+                        VALUES (' + heartRate + ',' + gsr + ',' + bodyTemp + ',' + \
+                       '\'' + date + '\',(SELECT user_id FROM users WHERE user_name = \''+\
+                       self.userName + '\' AND password = \'' + self.password + '\'));')
         self.cur.execute(query)
-        self.connection.commit()'''
-    
-    def addGSR(gsr):
-        pass
-    def addHeartRate(heartRate):
-        pass
+        self.connection.commit()
+        return True
     

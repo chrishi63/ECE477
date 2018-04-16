@@ -14,7 +14,7 @@ import datacollection_auto as dataUi
 import serverConnectionController as server
 
 class DataCollectionScreen(QMainWindow, dataUi.Ui_DataCollection):
-############################################################################################
+    ############################################################################################
     def clearData(self):
         self.heartRate = 0
         self.gsr = 0
@@ -22,124 +22,111 @@ class DataCollectionScreen(QMainWindow, dataUi.Ui_DataCollection):
         self.label_2.setText("")
         self.label_3.setText("")
         self.label_4.setText("")
-############################################################################################
+        
+    ############################################################################################
     def onSendDataPbPress(self):
+        if (self.heartRate * self.gsr * self.bodyTemp) is 0:
+            #create popup that tells user to enter rest of data
+            return
         if (self.sendingDataToServerFails()):
             # make a popup window that send data sending failed
-            return
+            return False
         self.clearData()
-############################################################################################
+        return True
+    
+    ############################################################################################
     def sendingDataToServerFails(self):
         #send data to server and return 0 if successful, 1 if unsuccessful
-        
-        return 0
-############################################################################################    
+        if (sensor.addSensorData(self.bodyTemp, self.gsr, self.heartRate))
+            return 0
+        return 1
+    
+    ############################################################################################    
     def sendDataByteThroughI2C(self, address, dataByte):
         bus.write_byte(address, dataByte)
         return
-############################################################################################    
+    
+    ############################################################################################    
     def sendDataByteToStm(self, dataByte):
 ##        bus.write_byte(self.stmAddressByte, 10)
         self.sendDataByteThroughI2C(self.stmAddressByte, dataByte)
         return
-############################################################################################
+    
+    ############################################################################################
     def readDataByteFromI2C(self, address):
         dataAvailable = 0
         while dataAvailable is 0:
             dataAvailable = bus.read_byte_data(address, 1)
         return dataAvailable
-############################################################################################
+    
+    ############################################################################################
     def readDataByteFromStm(self):
         return self.readDataByteFromI2C(self.stmAddressByte)
-############################################################################################
-    def createDataPrompt(self, informativeText):
+    
+    ############################################################################################
+    def createDataPrompt(self, text, informativeText):
         clearDataPrompt = QMessageBox()
         clearDataPrompt.setIcon(QMessageBox.Question)
-        clearDataPrompt.setText("Existing data has not been sent")
+        clearDataPrompt.setText(text)
         clearDataPrompt.setInformativeText(informativeText)        
         clearDataPrompt.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
         clearDataPrompt.show()
 
         return clearDataPrompt.exec_() != 65536
-############################################################################################
+    ############################################################################################
     def promptUserToOverrideData(self, sensor):
         if sensor is 1:
             informativeText = "There is existing heart rate data that \
-that has not been sent to the server. Taking a new measurement will override this data. \
+has not been sent to the server. Taking a new measurement will override this data. \
 Would you like to proceed?"
         elif sensor is 2:
-            informativeText = ""
+            informativeText = "There is existing gsr data that has  not been sent to the \
+server. Taking a new measurement will override this data. \
+Would you like to proceed?"
         else:
-            informativeText = ""
-        return self.createDataPrompt(informativeText)
-############################################################################################
+            informativeText = "There is existing body temperature data that has not been \
+sent to the server. Taking a new measurement will override this data. \
+Would you like to proceed?"
+        return self.createDataPrompt("Existing data has not been sent", informativeText)
+    ############################################################################################
     def userChoosesToOverrideHeartRateData(self):
         return self.promptUserToOverrideData(1)
-############################################################################################
+    
+    ############################################################################################
     def userChoosesToOverrideGSRData(self):
         return self.promptsUserToOverrideData(2)
-########################################################################################
+    
+    ########################################################################################
     def userChoosesToOverrideBodyTemperatureData(self):
         return self.promptUserToOverrideData(3)
-############################################################################################
+    
+    ############################################################################################
     def checkStoredHeartRateData(self):
         if self.label_2.text() is not "":
-            #prompt user if they want to erase existing data that has not been sent to server
-            #if user hits yes:
-                #self.heartRate = 0
-                #clear heart Rate on screen
-                #measureHeartRate(self)
             if self.userChoosesToOverrideHeartRateData():
                 self.measureHeartRate()
             else:
                 pass
         else:
             self.measureHeartRate()
-############################################################################################
+            
+    ############################################################################################
     def checkBodyTemperatureData(self):
         if self.label_4.text() is not "":
-            #prompt user if they want to erase existing data that has not been sent to server
-            #if user hits yes:
-                #self.heartRate = 0
-                #clear heart Rate on screen
-                #measureHeartRate(self)
-            clearDataPrompt = QMessageBox()
-            clearDataPrompt.setIcon(QMessageBox.Question)
-            clearDataPrompt.setText("Existing data has not been sent")
-            clearDataPrompt.setInformativeText("There is existing body temperature data that \
-has not been sent to the server. Taking a new measurement will override this data. \
-Would you like to proceed?")        
-            clearDataPrompt.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
-            clearDataPrompt.show()
-            if(clearDataPrompt.exec_() == 65536):
-                pass
-            else:
-                self.measureBodyTemperature()
+            if self.userChoosesToOverrideGSRData():
+                self.measureBodyTemperare()
         else:
             self.measureBodyTemperature()
-############################################################################################
+            
+    ############################################################################################
     def checkGalvanicSkinResponseData(self):
         if self.label_3.text() is not "":
-            #prompt user if they want to erase existing data that has not been sent to server
-            #if user hits yes:
-                #self.heartRate = 0
-                #clear heart Rate on screen
-                #measureHeartRate(self)
-            clearDataPrompt = QMessageBox()
-            clearDataPrompt.setIcon(QMessageBox.Question)
-            clearDataPrompt.setText("Existing data has not been sent")
-            clearDataPrompt.setInformativeText("There is existing galvanic response data that \
-that has not been sent to the server. Taking a new measurement will override this data. \
-Would you like to proceed?")        
-            clearDataPrompt.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
-            clearDataPrompt.show()
-            if(clearDataPrompt.exec_() == 65536):
-                pass
-            else:
+            if self.userChoosesToOverrideBodyTemperatureData():
                 self.measureGalvanicSkinResponse()
         else:
             self.measureGalvanicSkinResponse()
-############################################################################################
+            
+    ############################################################################################
     def measureHeartRate(self):
         if self.stmAddressByte is 0:
             self.heartRate = self.heartRate + 1
@@ -158,11 +145,11 @@ Would you like to proceed?")
 ##        self.heartRate = readDataByteFromStm(self)
         #display data on screen
 ##        self.label_2.setText(str(self.heartRate))
-##        measuringPrompt.hide()
+            measuringPrompt.hide()
         self.label_2.setText(str(self.heartRate))
-        measuringPrompt.hide()
         #reenable other pushbuttons
-############################################################################################
+        
+    ############################################################################################
     def measureBodyTemperature(self):
         if self.stmAddressByte is 0:
             self.bodyTemp = self.bodyTemp + 1
@@ -173,10 +160,12 @@ Would you like to proceed?")
             self.sendDataByteToStm(self.bodyTempSignal)
 ##            time.sleep(5)
             self.bodyTemp = self.readDataByteFromStm()
+            measuringPrompt.hide()
         #send body temperature signal to stm
         #wait for data from stm
         self.label_4.setText(str(self.bodyTemp))
-############################################################################################
+        
+    ############################################################################################
     def measureGalvanicSkinResponse(self):
         if self.stmAddressByte is 0:
             self.gsr = self.gsr + 1
@@ -187,18 +176,19 @@ Would you like to proceed?")
             self.sendDataByteToStm(self.gsrSignal)
 ##            time.sleep(5)
             self.gsr = self.readDataByteFromStm()
+            measuringPrompt.hide()
         #send gsr signal to stm
         #wait for data from stm    
         self.label_3.setText(str(self.gsr))
-############################################################################################
+        
+    ############################################################################################
     def __init__(self):
         super(self.__class__, self).__init__()
         self.setupUi(self)
         self.heartRate = 0
         self.gsr = 0
         self.bodyTemp = 0
-        self.stmAddressByte = 0x10 #<- change this
-##        self.stmAddressByte = 0
+        self.stmAddressByte = 0x0 #<- change this
         self.heartRateSignal = 2
         self.gsrSignal = 3
         self.bodyTempSignal = 4
@@ -208,12 +198,14 @@ Would you like to proceed?")
         self.pbGSR.clicked.connect(lambda: self.checkGalvanicSkinResponseData())
         self.pbBodyTemp.clicked.connect(lambda: self.checkBodyTemperatureData())
         self.pbSendData.clicked.connect(lambda: self.onSendDataPbPress())
-############################################################################################
+        
+################################################################################################
 def main():
     app = QApplication(sys.argv)
     form = DataCollectionScreen()
     form.show()
     sys.exit(app.exec_())
-############################################################################################
+    
+################################################################################################
 if __name__ == "__main__":
     main()
