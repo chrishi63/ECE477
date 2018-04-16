@@ -37,7 +37,7 @@ class DataCollectionScreen(QMainWindow, dataUi.Ui_DataCollection):
     ############################################################################################
     def sendingDataToServerFails(self):
         #send data to server and return 0 if successful, 1 if unsuccessful
-        if (sensor.addSensorData(self.bodyTemp, self.gsr, self.heartRate))
+        if (server.addSensorData(self.bodyTemp, self.gsr, self.heartRate)):
             return 0
         return 1
     

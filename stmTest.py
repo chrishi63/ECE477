@@ -21,8 +21,8 @@ if __name__ == "__main__":
     deviceAddress = 0x10 
     sendDataByteThroughI2C(deviceAddress, 1)
     print("first data byte sent")
-    sendDataByteThroughI2C(deviceAddress, 2)
-    print("second data byte send")
+    #sendDataByteThroughI2C(deviceAddress, 2)
+
     print(readDataByteFromI2C(deviceAddress))
     
     
