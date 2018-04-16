@@ -53,7 +53,8 @@ before attempting to send data to server")
         config = server.connectionConfigurations()
         connection = server.serverConnection(config)
         connection.startConnection()
-        if (connection.addSensorData(self.bodyTemp, self.gsr, self.heartRate)):
+        if (connection.addSensorData(self.userName, self.password, \
+                                     self.bodyTemp, self.gsr, self.heartRate)):
             return 0
         return 1
     
@@ -208,6 +209,8 @@ Would you like to proceed?"
         self.heartRateSignal = 2
         self.gsrSignal = 3
         self.bodyTempSignal = 4
+        self.userName = ''
+        self.password = ''
         
         #button functionality:
         self.pbHeartRate.clicked.connect(lambda: self.checkStoredHeartRateData())

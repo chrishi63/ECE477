@@ -42,6 +42,8 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
         if connection.checkLoginCredentials(self.loginScreen.txteditUserName.text(), \
                                          self.loginScreen.txteditPassword.text())\
                                          is True:
+            self.dataCollectionScreen.userName = userName
+            self.dataCollectionScreen.password = password
             self.showDataCollectionScreen()
         else:
             print(False)
@@ -57,6 +59,8 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
         userName = (self.createAccount.txteditUserName.text())
         password = (self.createAccount.txteditPassword.text())
         if connection.createNewUserAccount(firstName, lastName, SSN, userName, password) is True:
+            self.dataCollectionScreen.userName = userName
+            self.dataCollectionScreen.password = password
             self.showDataCollectionScreen()
         else:
             print(False)
