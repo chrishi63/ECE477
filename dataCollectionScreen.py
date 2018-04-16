@@ -26,10 +26,21 @@ class DataCollectionScreen(QMainWindow, dataUi.Ui_DataCollection):
     ############################################################################################
     def onSendDataPbPress(self):
         if (self.heartRate * self.gsr * self.bodyTemp) is 0:
-            #create popup that tells user to enter rest of data
+            emptyMeasurementsPrompt = QMessageBox()
+            ##emptyMeasurementsPrompt.setIcon(QMessageBox.Question)
+            emptyMeasurementsPrompt.setText("Empty Data Entries")
+            emptyMeasurementsPrompt.setInformativeText("Please take all measurements \
+before attempting to send data to server")        
+            emptyMeasurementsPrompt.show()
             return
         if (self.sendingDataToServerFails()):
             # make a popup window that send data sending failed
+            clearDataPrompt = QMessageBox()
+            #clearDataPrompt.setIcon(QMessageBox.Question)
+            clearDataPrompt.setText("Sending Data To Server Failed")
+            #clearDataPrompt.setInformativeText(informativeText)        
+            #clearDataPrompt.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+            clearDataPrompt.show()
             return False
         self.clearData()
         return True
@@ -37,7 +48,10 @@ class DataCollectionScreen(QMainWindow, dataUi.Ui_DataCollection):
     ############################################################################################
     def sendingDataToServerFails(self):
         #send data to server and return 0 if successful, 1 if unsuccessful
-        if (server.addSensorData(self.bodyTemp, self.gsr, self.heartRate)):
+        config = server.connectionConfigurations()
+        connection = server.serverConnection(config)
+        connection.startConnection()
+        if (connection.addSensorData(self.bodyTemp, self.gsr, self.heartRate)):
             return 0
         return 1
     
