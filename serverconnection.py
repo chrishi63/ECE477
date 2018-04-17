@@ -8,9 +8,8 @@ import mysql.connector
 #                               host='mysql.stackcp.com',\
 #                               database='cl57-users-xyq', port=50728)
 
-cnx = mysql.connector.connect(user='achhetri', password='aka619ASH', \
-                             host='mydb.ics.purdue.edu ',\
-                             database='achhetri')
+cnx = mysql.connector.connect(user='senior477', password='SET56?ra', host=\
+                 'mysql.stackcp.com',database='senior-33352e44', port = '50857')
 if cnx.is_connected():
    print('Connected to MySQL database')
 cur = cnx.cursor()
