@@ -18,7 +18,7 @@ def readDataByteFromI2C(address):
     return bus.read_byte_data(address, 1)
 ############################################################################################
 if __name__ == "__main__":
-    deviceAddress = 0x10 
+    deviceAddress = 0x08 
     sendDataByteThroughI2C(deviceAddress, 1)
     print("first data byte sent")
     #sendDataByteThroughI2C(deviceAddress, 2)

@@ -39,9 +39,9 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
         connection = server.serverConnection(config)
         connection.startConnection()
         print(str(self.loginScreen.txteditUserName.text()))
-        if connection.checkLoginCredentials(self.loginScreen.txteditUserName.text(), \
-                                         self.loginScreen.txteditPassword.text())\
-                                         is True:
+        userName = self.loginScreen.txteditUserName.text()
+        password = self.loginScreen.txteditPassword.text()
+        if connection.checkLoginCredentials(userName, password) is True:
             self.dataCollectionScreen.userName = userName
             self.dataCollectionScreen.password = password
             self.showDataCollectionScreen()

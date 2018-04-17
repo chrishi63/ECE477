@@ -27,20 +27,22 @@ class DataCollectionScreen(QMainWindow, dataUi.Ui_DataCollection):
     def onSendDataPbPress(self):
         if (self.heartRate * self.gsr * self.bodyTemp) is 0:
             emptyMeasurementsPrompt = QMessageBox()
-            ##emptyMeasurementsPrompt.setIcon(QMessageBox.Question)
+            emptyMeasurementsPrompt.setIcon(QMessageBox.Question)
             emptyMeasurementsPrompt.setText("Empty Data Entries")
             emptyMeasurementsPrompt.setInformativeText("Please take all measurements \
-before attempting to send data to server")        
+before attempting to send data to server")
+            emptyMeasurementsPrompt.setStandardButtons(QMessageBox.Ok)
             emptyMeasurementsPrompt.show()
+            emptyMeasurementsPrompt.exec_()
             print("empty")
             return False
         if (self.sendingDataToServerFails()):
             # make a popup window that send data sending failed
             clearDataPrompt = QMessageBox()
-            #clearDataPrompt.setIcon(QMessageBox.Question)
+            clearDataPrompt.setIcon(QMessageBox.Question)
             clearDataPrompt.setText("Sending Data To Server Failed")
             #clearDataPrompt.setInformativeText(informativeText)        
-            #clearDataPrompt.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+            clearDataPrompt.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
             clearDataPrompt.show()
             print("failed sending data to server")
             return False
