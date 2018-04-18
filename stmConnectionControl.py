@@ -17,7 +17,7 @@ class stmConnection():
         if self.sensorSignal is 1:
             top = readDataByteFromI2C(deviceAddress)
             bot = readDataByteFromI2C(deviceAddress)
-            return str(top) + '.' + str(bot)return random.randint(58,103)
+            return str(top) + '.' + str(bot)
         else:
             topNum = bin(readDataByteFromI2C(deviceAddress))
             botNum = bin(readDataByteFromI2C(deviceAddress))

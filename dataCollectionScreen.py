@@ -12,7 +12,7 @@ from PyQt5.QtWidgets import *
 
 import datacollection_auto as dataUi
 import serverConnectionController as server
-import stmConnectionControl as stm
+import stmConnectionController as stm
 
 class DataCollectionScreen(QMainWindow, dataUi.Ui_DataCollection):
     ############################################################################################
@@ -83,7 +83,7 @@ before attempting to send data to server")
             informativeText = "There is existing heart rate data that \
 has not been sent to the server. Taking a new measurement will override this data. \
 Would you like to proceed?"
-        elif sensor is 2:
+        elif sensor is 3:
             informativeText = "There is existing gsr data that has  not been sent to the \
 server. Taking a new measurement will override this data. \
 Would you like to proceed?"
@@ -98,7 +98,7 @@ Would you like to proceed?"
     
     ############################################################################################
     def userChoosesToOverrideGSRData(self):
-        return self.promptsUserToOverrideData(2)
+        return self.promptUserToOverrideData(2)
     
     ########################################################################################
     def userChoosesToOverrideBodyTemperatureData(self):
@@ -108,10 +108,12 @@ Would you like to proceed?"
     def checkStoredHeartRateData(self):
         if self.label_2.text() is not "":
             if self.userChoosesToOverrideHeartRateData():
+                self.messageText.setText("Measuring Heart Rate")
                 self.measureHeartRate()
             else:
                 pass
         else:
+            self.messageText.setText("Measuring Heart Rate")
             self.measureHeartRate()
             
     ############################################################################################
@@ -126,32 +128,32 @@ Would you like to proceed?"
     def checkGalvanicSkinResponseData(self):
         if self.label_3.text() is not "":
             if self.userChoosesToOverrideBodyTemperatureData():
+                self.messageText.setText("Measuring Body Temperature")
                 self.measureGalvanicSkinResponse()
         else:
             self.measureGalvanicSkinResponse()
+            self.messageText.setText("Measuring Body Temperature")
             
     ############################################################################################
     def measureHeartRate(self):
         if self.stmAddressByte is 0:
             self.heartRate = self.heartRate + 1
         else:
-            self.messageText.setText("Measuring Heart Rate")
+            self.messageText.setText("")
             connection = stm.stmConnection()
             connection.signalSensorToSTM(self.heartRateSignal)
             self.heartRate = connection.readSensorData()
-            measuringPrompt.hide()
-        self.label_2.setText(str(self.heartRate))
+            self.label_2.setText(str(self.heartRate))
         
     ############################################################################################
     def measureBodyTemperature(self):
         if self.stmAddressByte is 0:
             self.bodyTemp = self.bodyTemp + 1
         else:
-            self.messageText.setText("Measuring Body Temperature")
+            self.messageText.setText("")
             connection = stm.stmConnection()
             connection.signalSensorToSTM(self.bodyTempSignal)
             self.bodyTemp = connection.readSensorData()
-            measuringPrompt.hide()
         self.label_4.setText(str(self.bodyTemp))
         
     ############################################################################################
@@ -159,11 +161,10 @@ Would you like to proceed?"
         if self.stmAddressByte is 0:
             self.gsr = self.gsr + 1
         else:
-            self.messageText.setText("Measuring Galvanic Skin Response")
+            self.messageText.setText("")
             connection = stm.stmConnection()
             connection.signalSensorToSTM(self.gsrSignal)
             self.gsr = connection.readSensorData()
-            measuringPrompt.hide()   
         self.label_3.setText(str(self.gsr))
         
     ############################################################################################

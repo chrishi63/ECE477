@@ -2,16 +2,21 @@
 # http://web.ics.purdue.edu/software/phpMyAdmin/
 
 import mysql.connector
-
+import pymysql
 #
 # cnx = mysql.connector.connect(user='ece477', password='SET56?ra', \
 #                               host='mysql.stackcp.com',\
 #                               database='cl57-users-xyq', port=50728)
-
-cnx = mysql.connector.connect(user='senior477', password='SET56?ra', host=\
+cnx = pymysql.connect(user='senior477', password='SET56?ra', host=\
                  'mysql.stackcp.com',database='senior-33352e44', port = 50857)
-if cnx.is_connected():
-   print('Connected to MySQL database ...')
+
+#cnx = mysql.connector.connect(user='senior477', password='SET56?ra', host=\
+#                 'mysql.stackcp.com',database='senior-33352e44', port = 50857)
+#cnx = mysql.connector.connect(user = 'achhetri',password='aka619ASH',\
+#                              host='mydb.ics.purdue.edu',\
+#                              database='achhetri')
+#if cnx.is_connected():
+#   print('Connected to MySQL database ...')
 cur = cnx.cursor()
 
 query = ("SELECT CONCAT(first_name, ' ', last_name) AS 'Patient Name', "

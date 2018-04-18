@@ -1,6 +1,7 @@
 #!usr/bin/python
 import sys
 import mysql.connector
+import pymysql
 
 class connectionConfigurations():
     def __init__(self, user='senior477', password='SET56?ra', host=\
@@ -11,8 +12,7 @@ class connectionConfigurations():
             'host' : host,
             'database' : database,
             'port' : port
-        }
-    
+        }    
 ################################################################################################
 class serverConnection():
     ############################################################################################
@@ -26,12 +26,17 @@ class serverConnection():
         try:
             self.connection = mysql.connector.connect(**self.configurations.config)
         except mysql.connector.Error as err:
-            if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-                print("Unable to access server with given username/password")
-            elif err.errno == errorcode.ER_BAD_DB_ERROR:
-                print("Database does not exist")
-            else:
-                print(err)
+            serverConnectionFailedPrompt = QMessageBox()
+            serverConnectionFailedPrompt.setIcon(QMessageBox.Question)
+            serverConnectionFailedPrompt.setText("Connection to Server Failed")
+            serverConnectionFailedPrompt.setStandardButtons(QMessageBox.Ok)
+            serverConnectionFailedPrompt.show()
+            serverConnectionFailedPrompt.exec_()
+            print("Connection Failed")
+            try:
+                self.connection = pymysql.connect(**self.configurations.config)
+            except:
+                print("Connection 2 Failed")
         else:
             #self.connection.close()
             self.cur = self.connection.cursor()
