@@ -47,6 +47,12 @@ before attempting to send data to server")
             clearDataPrompt.show()
             print("failed sending data to server")
             return False
+        sendSuccessPrompt = QMessageBox()
+        sendSuccessPrompt.setIcon(QMessageBox.Question)
+        sendSuccessPrompt.setText("Data Sent To Server Successfully")
+        sendSuccessPrompt.setStandardButtons(QMessageBox.Ok)
+        sendSuccessPrompt.show()
+        sendSuccessPrompt.exec_()
         self.clearData()
         return True
     

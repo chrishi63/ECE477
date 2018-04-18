@@ -46,7 +46,13 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
             self.dataCollectionScreen.password = password
             self.showDataCollectionScreen()
         else:
-            print(False)
+            incorrectLoginPrompt = QMessageBox()
+            incorrectLoginPrompt.setIcon(QMessageBox.Question)
+            incorrectLoginPrompt.setText("Login Failed")
+            incorrectLoginPrompt.setInformativeText("Inocrrect username or password")
+            incorrectLoginPrompt.setStandardButtons(QMessageBox.Ok)
+            incorrectLoginPrompt.show()
+            incorrectLoginPrompt.exec_()
         connection.closeConnection()
 ##################################################################
     def attemptCreateAccount(self):
@@ -63,7 +69,13 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
             self.dataCollectionScreen.password = password
             self.showDataCollectionScreen()
         else:
-            print(False)
+            incorrectLoginPrompt = QMessageBox()
+            incorrectLoginPrompt.setIcon(QMessageBox.Question)
+            incorrectLoginPrompt.setText("Create Account Failed")
+            incorrectLoginPrompt.setInformativeText("Inocrrect username or password")
+            incorrectLoginPrompt.setStandardButtons(QMessageBox.Ok)
+            incorrectLoginPrompt.show()
+            incorrectLoginPrompt.exec_()
         connection.closeConnection()
 ##################################################################
     def hideLoginScreen(self):

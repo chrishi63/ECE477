@@ -1,11 +1,15 @@
+brandName.png
 createaccountscreen.cpp
 createaccountscreen.h
 datacollection.cpp
 datacollection.h
 datacollection.ui
+footer.png
+header.qrc
 loginscreen.cpp
 loginscreen.h
 loginscreen.ui
+logo.png
 main.cpp
 mainscreen.cpp
 mainscreen.h
