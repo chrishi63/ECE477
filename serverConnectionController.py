@@ -4,12 +4,13 @@ import mysql.connector
 
 class connectionConfigurations():
     def __init__(self, user='senior477', password='SET56?ra', host=\
-                 'mysql.stackcp.com',database='senior-33352e44', port = '50857'):
+                 'mysql.stackcp.com',database='senior-33352e44', port = 50857):
         self.config = {
             'user': user,
             'password' : password,
             'host' : host,
             'database' : database,
+            'port' : port
         }
     
 ################################################################################################

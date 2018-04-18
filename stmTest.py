@@ -15,14 +15,12 @@ def readDataByteFromI2C(address):
     #while dataAvailable is 0:
     #    dataAvailable = bus.read_byte_data(address, 1)
     #return dataAvailable
-    return bus.read_byte_data(address, 1)
+    return bus.read_byte(address)
 ############################################################################################
 if __name__ == "__main__":
-    deviceAddress = 0x08 
+    deviceAddress = 0x0a 
     sendDataByteThroughI2C(deviceAddress, 1)
     print("first data byte sent")
-    #sendDataByteThroughI2C(deviceAddress, 2)
 
     print(readDataByteFromI2C(deviceAddress))
-    
-    
+    print(readDataByteFromI2C(deviceAddress)) 
