@@ -135,9 +135,7 @@ Would you like to proceed?"
         if self.stmAddressByte is 0:
             self.heartRate = self.heartRate + 1
         else:
-            measuringPrompt = QMessageBox()
-            measuringPrompt.setText("Measuring Heart Rate")
-            measuringPrompt.show()
+            self.messageText.setText("Measuring Heart Rate")
             connection = stm.stmConnection()
             connection.signalSensorToSTM(self.heartRateSignal)
             self.heartRate = connection.readSensorData()
@@ -149,9 +147,7 @@ Would you like to proceed?"
         if self.stmAddressByte is 0:
             self.bodyTemp = self.bodyTemp + 1
         else:
-            measuringPrompt = QMessageBox()
-            measuringPrompt.setText("Measuring Body Temperature")
-            measuringPrompt.show()
+            self.messageText.setText("Measuring Body Temperature")
             connection = stm.stmConnection()
             connection.signalSensorToSTM(self.bodyTempSignal)
             self.bodyTemp = connection.readSensorData()
@@ -163,9 +159,7 @@ Would you like to proceed?"
         if self.stmAddressByte is 0:
             self.gsr = self.gsr + 1
         else:
-            measuringPrompt = QMessageBox()
-            measuringPrompt.setText("Measuring Galvanic Skin Response")
-            measuringPrompt.show()
+            self.messageText.setText("Measuring Galvanic Skin Response")
             connection = stm.stmConnection()
             connection.signalSensorToSTM(self.gsrSignal)
             self.gsr = connection.readSensorData()

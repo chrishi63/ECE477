@@ -37,6 +37,11 @@ class Ui_DataCollection(object):
 "QPushButton:default {\n"
 "    background-color:#e5982c;\n"
 "}\n"
+"QPushButton:disabled {\n"
+"    border: 1px solid ;\n"
+"    color: #rgb(122, 122, 122);\n"
+"    border-radius: 15%\n"
+"}\n"
 "QPushButton:pressed {\n"
 "    position:relative;\n"
 "    top:1px;\n"
@@ -52,6 +57,11 @@ class Ui_DataCollection(object):
 "}\n"
 "QPushButton:default {\n"
 "    background-color:#e5982c;\n"
+"}\n"
+"QPushButton:disabled {\n"
+"    border: 1px solid ;\n"
+"    color: #rgb(122, 122, 122);\n"
+"    border-radius: 15%\n"
 "}\n"
 "QPushButton:pressed {\n"
 "    position:relative;\n"
@@ -98,6 +108,11 @@ class Ui_DataCollection(object):
 "QPushButton:default {\n"
 "    background-color:#e5982c;\n"
 "}\n"
+"QPushButton:disabled {\n"
+"    border: 1px solid ;\n"
+"    color: #rgb(122, 122, 122);\n"
+"    border-radius: 15%\n"
+"}\n"
 "QPushButton:pressed {\n"
 "    position:relative;\n"
 "    top:1px;\n"
@@ -113,6 +128,11 @@ class Ui_DataCollection(object):
 "}\n"
 "QPushButton:default {\n"
 "    background-color:#e5982c;\n"
+"}\n"
+"QPushButton:disabled {\n"
+"    border: 1px solid ;\n"
+"    color: #rgb(122, 122, 122);\n"
+"    border-radius: 15%\n"
 "}\n"
 "QPushButton:pressed {\n"
 "    position:relative;\n"
@@ -196,6 +216,11 @@ class Ui_DataCollection(object):
         self.line_4.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_4.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_4.setObjectName("line_4")
+        self.messageText = QtWidgets.QLabel(self.centralwidget)
+        self.messageText.setGeometry(QtCore.QRect(290, 190, 221, 20))
+        self.messageText.setText("")
+        self.messageText.setAlignment(QtCore.Qt.AlignCenter)
+        self.messageText.setObjectName("messageText")
         DataCollection.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(DataCollection)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
@@ -213,7 +238,7 @@ class Ui_DataCollection(object):
         DataCollection.setWindowTitle(_translate("DataCollection", "MainWindow"))
         self.pbSendData.setText(_translate("DataCollection", "Send Data To Server"))
         self.pbHeartRate.setText(_translate("DataCollection", "Heart Rate"))
-        self.pbGSR.setText(_translate("DataCollection", "Galvanic Response"))
+        self.pbGSR.setText(_translate("DataCollection", "Galvanic Skin Response"))
         self.pbBodyTemp.setText(_translate("DataCollection", "Body Temperature"))
         self.label.setText(_translate("DataCollection", "Collect Sensor Data"))
 
