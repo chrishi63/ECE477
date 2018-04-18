@@ -9,9 +9,9 @@ import mysql.connector
 #                               database='cl57-users-xyq', port=50728)
 
 cnx = mysql.connector.connect(user='senior477', password='SET56?ra', host=\
-                 'mysql.stackcp.com',database='senior-33352e44', port = '50857')
+                 'mysql.stackcp.com',database='senior-33352e44', port = 50857)
 if cnx.is_connected():
-   print('Connected to MySQL database')
+   print('Connected to MySQL database ...')
 cur = cnx.cursor()
 
 query = ("SELECT CONCAT(first_name, ' ', last_name) AS 'Patient Name', "
@@ -24,7 +24,7 @@ query = ("SELECT CONCAT(first_name, ' ', last_name) AS 'Patient Name', "
    "sweat AS 'Sweat Response' "
    "FROM users "
    "INNER JOIN datasets ON users.user_id = datasets.user_id "
-   "WHERE user_name = 'chrishi63' AND password = '1234';")
+   "WHERE user_name = 'ccoluson99' AND password = '123456';")
 
 cur.execute(query)
 

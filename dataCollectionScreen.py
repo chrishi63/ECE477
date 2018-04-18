@@ -12,7 +12,7 @@ from PyQt5.QtWidgets import *
 
 import datacollection_auto as dataUi
 import serverConnectionController as server
-import stmConnectionController as stm
+import stmConnectionControl as stm
 
 class DataCollectionScreen(QMainWindow, dataUi.Ui_DataCollection):
     ############################################################################################
@@ -133,8 +133,8 @@ Would you like to proceed?"
             measuringPrompt.setText("Measuring Heart Rate")
             measuringPrompt.show()
             connection = stm.stmConnection()
-            connection.sendDataByteToStm(self.heartRateSignal)
-            self.heartRate = connection.readDataByteFromStm()
+            connection.signalSensorToSTM(self.heartRateSignal)
+            self.heartRate = connection.readSensorData()
             measuringPrompt.hide()
         self.label_2.setText(str(self.heartRate))
         
@@ -146,9 +146,9 @@ Would you like to proceed?"
             measuringPrompt = QMessageBox()
             measuringPrompt.setText("Measuring Body Temperature")
             measuringPrompt.show()
-            connetion = stm.stmConnection()
-            connection.sendDataByteToStm(self.bodyTempSignal)
-            self.bodyTemp = connection.readDataByteFromStm()
+            connection = stm.stmConnection()
+            connection.signalSensorToSTM(self.bodyTempSignal)
+            self.bodyTemp = connection.readSensorData()
             measuringPrompt.hide()
         self.label_4.setText(str(self.bodyTemp))
         
@@ -161,8 +161,8 @@ Would you like to proceed?"
             measuringPrompt.setText("Measuring Galvanic Skin Response")
             measuringPrompt.show()
             connection = stm.stmConnection()
-            connetion.sendDataByteToStm(self.gsrSignal)
-            self.gsr = connection.readDataByteFromStm()
+            connection.signalSensorToSTM(self.gsrSignal)
+            self.gsr = connection.readSensorData()
             measuringPrompt.hide()   
         self.label_3.setText(str(self.gsr))
         
@@ -173,9 +173,10 @@ Would you like to proceed?"
         self.heartRate = 0
         self.gsr = 0
         self.bodyTemp = 0
-        self.heartRateSignal = 2
-        self.gsrSignal = 3
-        self.bodyTempSignal = 4
+        self.heartRateSignal = 3
+        self.gsrSignal = 2
+        self.bodyTempSignal = 1
+        self.stmAddressByte = 0x40
         self.userName = ''
         self.password = ''
         
