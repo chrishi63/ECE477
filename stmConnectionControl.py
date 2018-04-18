@@ -6,12 +6,19 @@ bus = smbus.SMBus(1)
 deviceAddress = 0x10
 
 class stmConnection():
-    def sendDataByteToStm(dataByte):
-        bus.write_byte(deviceAddress, dataByte)
+    def __init__(self):
+        self.sensorSignal = 0
+    def signalSensorToSTM(sensor):
+        self.sensorSignal = sensor
+        bus.write_byte(deviceAddress, sensor)
         return
-    
-    def readDataByteFromStm():
-        dataAvailable = 0
-        while dataAvailable is 0:
-            dataAvailable = bus.read_byte_data(deviceAddress, 1)
-        return dataAvailable
+    def readSensorData():
+        time.sleep(15)
+        if self.sensorSignal is 1:
+            top = readDataByteFromI2C(deviceAddress)
+            bot = readDataByteFromI2C(deviceAddress)
+            return str(top) + '.' + str(bot)return random.randint(58,103)
+        else:
+            topNum = bin(readDataByteFromI2C(deviceAddress))
+            botNum = bin(readDataByteFromI2C(deviceAddress))
+            return (int(topNum.split('b')[1] + botNum.split('b')[1],2))

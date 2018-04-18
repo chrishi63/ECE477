@@ -16,11 +16,30 @@ def readDataByteFromI2C(address):
     #    dataAvailable = bus.read_byte_data(address, 1)
     #return dataAvailable
     return bus.read_byte(address)
+
+def getTemperature(address):
+    sendDataByteThroughI2C(deviceAddress, 1)
+    top = readDataByteFromI2C(deviceAddress)
+    bot = readDataByteFromI2C(deviceAddress)
+    return str(top) + '.' + str(bot)
+    
+
+def getGSC(address):
+    sendDataByteThroughI2C(deviceAddress, 2)
+    topNum = bin(readDataByteFromI2C(deviceAddress))
+    botNum = bin(readDataByteFromI2C(deviceAddress))
+    return (int(topNum.split('b')[1] + botNum.split('b')[1],2))
+
+def getPulse(address):
+    sendDataByteThroughI2C(deviceAddress, 3)
+    topNum = bin(readDataByteFromI2C(deviceAddress))
+    botNum = bin(readDataByteFromI2C(deviceAddress))
+    return (int(topNum.split('b')[1] + botNum.split('b')[1],2))
+        
+
 ############################################################################################
 if __name__ == "__main__":
     deviceAddress = 0x0a 
-    sendDataByteThroughI2C(deviceAddress, 1)
-    print("first data byte sent")
-
-    print(readDataByteFromI2C(deviceAddress))
-    print(readDataByteFromI2C(deviceAddress)) 
+    #print(getTemperature(deviceAddress))
+    #print(getGSC(deviceAddress))
+    print(getPulse(deviceAddress))

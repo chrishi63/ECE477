@@ -9,11 +9,11 @@ deviceAddress = 0x10
 class stmConnection():
     def __init__(self):
         self.sensorSignal = 0
-    def sendDataByteToStm(self,sensor):
+    def signalSensorToSTM(self,sensor):
         self.sensorSignal = sensor
     
-    def readDataByteFromStm(self):
-        sleep(10)
+    def readSensorData(self):
+        time.sleep(10)
         if self.sensorSignal is 2:
             return random.randint(58,103)
         if self.sensorSignal is 3:
