@@ -12,6 +12,7 @@ from PyQt5.QtWidgets import *
 
 import datacollection_auto as dataUi
 import serverConnectionController as server
+import stmConnectionController as stm
 
 class DataCollectionScreen(QMainWindow, dataUi.Ui_DataCollection):
     ############################################################################################
@@ -59,28 +60,6 @@ before attempting to send data to server")
                                      self.bodyTemp, self.gsr, self.heartRate)):
             return 0
         return 1
-    
-    ############################################################################################    
-    def sendDataByteThroughI2C(self, address, dataByte):
-        bus.write_byte(address, dataByte)
-        return
-    
-    ############################################################################################    
-    def sendDataByteToStm(self, dataByte):
-##        bus.write_byte(self.stmAddressByte, 10)
-        self.sendDataByteThroughI2C(self.stmAddressByte, dataByte)
-        return
-    
-    ############################################################################################
-    def readDataByteFromI2C(self, address):
-        dataAvailable = 0
-        while dataAvailable is 0:
-            dataAvailable = bus.read_byte_data(address, 1)
-        return dataAvailable
-    
-    ############################################################################################
-    def readDataByteFromStm(self):
-        return self.readDataByteFromI2C(self.stmAddressByte)
     
     ############################################################################################
     def createDataPrompt(self, text, informativeText):
@@ -153,20 +132,11 @@ Would you like to proceed?"
             measuringPrompt = QMessageBox()
             measuringPrompt.setText("Measuring Heart Rate")
             measuringPrompt.show()
-            self.sendDataByteToStm(self.heartRateSignal)
-##            time.sleep(5)
-            #may need to add a delay to raspberry pi here to prevent connection time out
-            self.heartRate = self.readDataByteFromStm()
-        #disable other pushbuttons
-        #send data byte signaling heart rate to stm:
-##        self.sendDataByteToStm(self.heartRateSignal)
-        #read data from stm
-##        self.heartRate = readDataByteFromStm(self)
-        #display data on screen
-##        self.label_2.setText(str(self.heartRate))
+            connection = stm.stmConnection()
+            connection.sendDataByteToStm(self.heartRateSignal)
+            self.heartRate = connection.readDataByteFromStm()
             measuringPrompt.hide()
         self.label_2.setText(str(self.heartRate))
-        #reenable other pushbuttons
         
     ############################################################################################
     def measureBodyTemperature(self):
@@ -176,12 +146,10 @@ Would you like to proceed?"
             measuringPrompt = QMessageBox()
             measuringPrompt.setText("Measuring Body Temperature")
             measuringPrompt.show()
-            self.sendDataByteToStm(self.bodyTempSignal)
-##            time.sleep(5)
-            self.bodyTemp = self.readDataByteFromStm()
+            connetion = stm.stmConnection()
+            connection.sendDataByteToStm(self.bodyTempSignal)
+            self.bodyTemp = connection.readDataByteFromStm()
             measuringPrompt.hide()
-        #send body temperature signal to stm
-        #wait for data from stm
         self.label_4.setText(str(self.bodyTemp))
         
     ############################################################################################
@@ -192,12 +160,10 @@ Would you like to proceed?"
             measuringPrompt = QMessageBox()
             measuringPrompt.setText("Measuring Galvanic Skin Response")
             measuringPrompt.show()
-            self.sendDataByteToStm(self.gsrSignal)
-##            time.sleep(5)
-            self.gsr = self.readDataByteFromStm()
-            measuringPrompt.hide()
-        #send gsr signal to stm
-        #wait for data from stm    
+            connection = stm.stmConnection()
+            connetion.sendDataByteToStm(self.gsrSignal)
+            self.gsr = connection.readDataByteFromStm()
+            measuringPrompt.hide()   
         self.label_3.setText(str(self.gsr))
         
     ############################################################################################
@@ -207,14 +173,12 @@ Would you like to proceed?"
         self.heartRate = 0
         self.gsr = 0
         self.bodyTemp = 0
-        self.stmAddressByte = 0x0 #<- change this
         self.heartRateSignal = 2
         self.gsrSignal = 3
         self.bodyTempSignal = 4
         self.userName = ''
         self.password = ''
         
-        #button functionality:
         self.pbHeartRate.clicked.connect(lambda: self.checkStoredHeartRateData())
         self.pbGSR.clicked.connect(lambda: self.checkGalvanicSkinResponseData())
         self.pbBodyTemp.clicked.connect(lambda: self.checkBodyTemperatureData())
