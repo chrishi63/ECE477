@@ -106,36 +106,36 @@ Would you like to proceed?"
     
     ############################################################################################
     def checkStoredHeartRateData(self):
+        print("Checking Stored Heart Rate Data")
         if self.label_2.text() is not "":
             if self.userChoosesToOverrideHeartRateData():
-                self.messageText.setText("Measuring Heart Rate")
+                #self.messageText.setText("Measuring Heart Rate")
                 self.measureHeartRate()
-            else:
-                pass
         else:
-            self.messageText.setText("Measuring Heart Rate")
+            #self.messageText.setText("Measuring Heart Rate")
             self.measureHeartRate()
             
     ############################################################################################
     def checkBodyTemperatureData(self):
         if self.label_4.text() is not "":
-            if self.userChoosesToOverrideGSRData():
-                self.measureBodyTemperare()
+            if self.userChoosesToOverrideBodyTemperatureData():
+                self.measureBodyTemperature()
         else:
             self.measureBodyTemperature()
             
     ############################################################################################
     def checkGalvanicSkinResponseData(self):
         if self.label_3.text() is not "":
-            if self.userChoosesToOverrideBodyTemperatureData():
-                self.messageText.setText("Measuring Body Temperature")
+            if self.userChoosesToOverrideGSRData():
+                #self.messageText.setText("Measuring Body Temperature")
                 self.measureGalvanicSkinResponse()
         else:
             self.measureGalvanicSkinResponse()
-            self.messageText.setText("Measuring Body Temperature")
+            #self.messageText.setText("Measuring Body Temperature")
             
     ############################################################################################
     def measureHeartRate(self):
+        print("Measuring Heart Rate")
         if self.stmAddressByte is 0:
             self.heartRate = self.heartRate + 1
         else:
@@ -143,7 +143,7 @@ Would you like to proceed?"
             connection = stm.stmConnection()
             connection.signalSensorToSTM(self.heartRateSignal)
             self.heartRate = connection.readSensorData()
-            self.label_2.setText(str(self.heartRate))
+        self.label_2.setText(str(self.heartRate))
         
     ############################################################################################
     def measureBodyTemperature(self):
@@ -177,7 +177,7 @@ Would you like to proceed?"
         self.heartRateSignal = 3
         self.gsrSignal = 2
         self.bodyTempSignal = 1
-        self.stmAddressByte = 0x40
+        self.stmAddressByte = 0
         self.userName = ''
         self.password = ''
         
