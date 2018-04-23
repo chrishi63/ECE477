@@ -22,7 +22,7 @@ class Ui_MainWindow(object):
         self.txteditUserName = QtWidgets.QLineEdit(self.centralwidget)
         self.txteditUserName.setGeometry(QtCore.QRect(350, 230, 181, 21))
         self.txteditUserName.setStyleSheet("QLineEdit {\n"
-"    border-bottom: 1px solid #e5982c;\n"
+"    border-bottom: 1px solid #d35400;\n"
 "    border-radius: 0px;\n"
 "    padding: 0 8px;\n"
 "    background: transparent;\n"
@@ -41,7 +41,7 @@ class Ui_MainWindow(object):
         self.txteditPassword = QtWidgets.QLineEdit(self.centralwidget)
         self.txteditPassword.setGeometry(QtCore.QRect(350, 290, 181, 21))
         self.txteditPassword.setStyleSheet("QLineEdit {\n"
-"    border-bottom: 1px solid #e5982c;\n"
+"    border-bottom: 1px solid #d35400;\n"
 "    border-radius: 0px;\n"
 "    padding: 0 8px;\n"
 "    background: transparent;\n"
@@ -70,20 +70,32 @@ class Ui_MainWindow(object):
 "QPushButton:default {\n"
 "    background-color:#e5982c;\n"
 "}\n"
+"QPushButton:disabled {\n"
+"    color: 	#A9A9A9;\n"
+"    border: 	1px solid #A9A9A9;\n"
+"    border-radius: 20%\n"
+"}\n"                                  
 "QPushButton:pressed {\n"
 "    position:relative;\n"
 "    top:1px;\n"
 "}\n"
 "")
         self.pbLogin.setObjectName("pbLogin")
-        self.progressBar = QtWidgets.QProgressBar(self.centralwidget)
-        self.progressBar.setGeometry(QtCore.QRect(660, 40, 118, 23))
-        self.progressBar.setProperty("value", 24)
-        self.progressBar.setObjectName("progressBar")
         self.pbReturn = QtWidgets.QPushButton(self.centralwidget)
-        self.pbReturn.setGeometry(QtCore.QRect(40, 30, 61, 51))
+        self.pbReturn.setGeometry(QtCore.QRect(60, 30, 91, 61))
+        self.pbReturn.setStyleSheet("background-image: url(/backArrow.png) ;\n"
+"background-repeat: none;\n"
+"background-size: 100px;")
         self.pbReturn.setText("")
+        self.pbReturn.setFlat(True)
         self.pbReturn.setObjectName("pbReturn")
+        self.batteryIndicator = QtWidgets.QProgressBar(self.centralwidget)
+        self.batteryIndicator.setGeometry(QtCore.QRect(690, 50, 51, 21))
+        self.batteryIndicator.setProperty("value", 24)
+        self.batteryIndicator.setObjectName("batteryIndicator")
+        self.label_5 = QtWidgets.QLabel(self.centralwidget)
+        self.label_5.setGeometry(QtCore.QRect(10, 310, 281, 141))
+        self.label_5.setObjectName("label_5")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
@@ -103,4 +115,5 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "User Name"))
         self.label_3.setText(_translate("MainWindow", "Password"))
         self.pbLogin.setText(_translate("MainWindow", "Login"))
+        self.label_5.setText(_translate("MainWindow", "<html><head/><body><p><img src=\":/logo.png\" width=\"200\" height=\"100\" /></p></body></html>"))
 

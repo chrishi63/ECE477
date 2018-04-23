@@ -19,10 +19,6 @@ class Ui_createAccountScreen(object):
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
-        self.pbReturn = QtWidgets.QPushButton(self.centralwidget)
-        self.pbReturn.setGeometry(QtCore.QRect(40, 30, 61, 51))
-        self.pbReturn.setText("")
-        self.pbReturn.setObjectName("pbReturn")
         self.progressBar = QtWidgets.QProgressBar(self.centralwidget)
         self.progressBar.setGeometry(QtCore.QRect(650, 50, 118, 23))
         self.progressBar.setProperty("value", 24)
@@ -144,6 +140,17 @@ class Ui_createAccountScreen(object):
 "    color: rgb(90, 90, 90);\n"
 "}")
         self.label_7.setObjectName("label_7")
+        self.label_8 = QtWidgets.QLabel(self.centralwidget)
+        self.label_8.setGeometry(QtCore.QRect(30, 280, 281, 141))
+        self.label_8.setObjectName("label_8")
+        self.pbReturn_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.pbReturn_2.setGeometry(QtCore.QRect(50, 20, 91, 61))
+        self.pbReturn_2.setStyleSheet("background-image: url(:/backArrow.png) ;\n"
+"background-repeat: none;\n"
+"background-size: 100px;")
+        self.pbReturn_2.setText("")
+        self.pbReturn_2.setFlat(True)
+        self.pbReturn_2.setObjectName("pbReturn_2")
         createAccountScreen.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(createAccountScreen)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
@@ -167,4 +174,5 @@ class Ui_createAccountScreen(object):
         self.label_5.setText(_translate("createAccountScreen", "User Name"))
         self.label_6.setText(_translate("createAccountScreen", "Password"))
         self.label_7.setText(_translate("createAccountScreen", "SSN will be used by hospital for any insurance related info and hospital record keeping"))
+        self.label_8.setText(_translate("createAccountScreen", "<html><head/><body><p><img src=\":/logo.png\" width=\"200\" height=\"100\" /></p></body></html>"))
 

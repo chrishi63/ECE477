@@ -11,7 +11,16 @@ class LoginScreen(QMainWindow, loginUi.Ui_MainWindow):
         super(self.__class__, self).__init__()
         self.setupUi(self)
         self.txteditPassword.setEchoMode(QLineEdit.Password)
-
+        self.pbLogin.setEnabled(False)
+        print(len(self.txteditUserName.text()))
+        self.txteditUserName.textChanged.connect(self.updatePbEnable)
+        self.txteditPassword.textChanged.connect(self.updatePbEnable)
+    def updatePbEnable(self):
+        if len(self.txteditUserName.text()) * len(self.txteditPassword.text()) > 0:
+            self.pbLogin.setEnabled(True)
+        else:
+            self.pbLogin.setEnabled(False)
+            
 def main():
     app = QApplication(sys.argv)
     form = LoginScreen()
