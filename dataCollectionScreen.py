@@ -120,7 +120,7 @@ Would you like to proceed?"
     def checkBodyTemperatureData(self):
         if self.label_4.text() is not "":
             if self.userChoosesToOverrideGSRData():
-                self.measureBodyTemperare()
+                self.measureBodyTemperature()
         else:
             self.measureBodyTemperature()
             
