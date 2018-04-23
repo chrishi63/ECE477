@@ -40,6 +40,6 @@ def getPulse(address):
 ############################################################################################
 if __name__ == "__main__":
     deviceAddress = 0x0a 
-    #print(getTemperature(deviceAddress))
+    print(getTemperature(deviceAddress))
     #print(getGSC(deviceAddress))
-    print(getPulse(deviceAddress))
+    #print(getPulse(deviceAddress))
