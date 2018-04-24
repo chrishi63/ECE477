@@ -12,6 +12,8 @@ class Ui_createAccountScreen(object):
     def setupUi(self, createAccountScreen):
         createAccountScreen.setObjectName("createAccountScreen")
         createAccountScreen.resize(800, 480)
+        createAccountScreen.setStyleSheet("background: #2e2e2e;\n"
+"")
         self.centralwidget = QtWidgets.QWidget(createAccountScreen)
         self.centralwidget.setObjectName("centralwidget")
         self.line = QtWidgets.QFrame(self.centralwidget)
@@ -20,7 +22,16 @@ class Ui_createAccountScreen(object):
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.progressBar = QtWidgets.QProgressBar(self.centralwidget)
-        self.progressBar.setGeometry(QtCore.QRect(650, 50, 118, 23))
+        self.progressBar.setGeometry(QtCore.QRect(690, 40, 51, 23))
+        self.progressBar.setStyleSheet("QProgressBar{\n"
+"    border: 1px solid grey;\n"
+"    border-radius: 5px;\n"
+"    text-align: center;\n"
+"    color: rgb(128, 128, 128);\n"
+"}\n"
+"QProgressBar::chunk{\n"
+"    background-color: rgb(211, 84, 0);\n"
+"}")
         self.progressBar.setProperty("value", 24)
         self.progressBar.setObjectName("progressBar")
         self.label = QtWidgets.QLabel(self.centralwidget)
@@ -29,7 +40,7 @@ class Ui_createAccountScreen(object):
         font.setPointSize(12)
         self.label.setFont(font)
         self.label.setStyleSheet("QLabel {\n"
-"    color: rgb(90, 90, 90);\n"
+"    color: rgb(128, 128, 128);\n"
 "}")
         self.label.setObjectName("label")
         self.txteditFirstName = QtWidgets.QLineEdit(self.centralwidget)
@@ -93,10 +104,10 @@ class Ui_createAccountScreen(object):
 "    border-radius: 15%\n"
 "}\n"
 "QPushButton:disabled {\n"
-"    color: 	#A9A9A9;\n"
-"    border: 	1px solid #A9A9A9;\n"
-"    border-radius: 20%\n"
-"}\n" 
+"    color:     #A9A9A9;\n"
+"    border:     1px solid #A9A9A9;\n"
+"    border-radius: 15%\n"
+"}\n"
 "QPushButton:default {\n"
 "    background-color:#e5982c;\n"
 "}\n"
@@ -109,31 +120,31 @@ class Ui_createAccountScreen(object):
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(250, 150, 141, 21))
         self.label_2.setStyleSheet("QLabel {\n"
-"    color: rgb(90, 90, 90);\n"
+"    color: rgb(128, 128, 128);\n"
 "}")
         self.label_2.setObjectName("label_2")
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
         self.label_3.setGeometry(QtCore.QRect(250, 190, 141, 21))
         self.label_3.setStyleSheet("QLabel {\n"
-"    color: rgb(90, 90, 90);\n"
+"    color: rgb(128, 128, 128);\n"
 "}")
         self.label_3.setObjectName("label_3")
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
         self.label_4.setGeometry(QtCore.QRect(250, 310, 141, 21))
         self.label_4.setStyleSheet("QLabel {\n"
-"    color: rgb(90, 90, 90);\n"
+"    color: rgb(128, 128, 128);\n"
 "}")
         self.label_4.setObjectName("label_4")
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
         self.label_5.setGeometry(QtCore.QRect(250, 230, 141, 21))
         self.label_5.setStyleSheet("QLabel {\n"
-"    color: rgb(90, 90, 90);\n"
+"    color: rgb(128, 128, 128);\n"
 "}")
         self.label_5.setObjectName("label_5")
         self.label_6 = QtWidgets.QLabel(self.centralwidget)
         self.label_6.setGeometry(QtCore.QRect(250, 270, 141, 21))
         self.label_6.setStyleSheet("QLabel {\n"
-"    color: rgb(90, 90, 90);\n"
+"    color: rgb(128, 128, 128);\n"
 "}")
         self.label_6.setObjectName("label_6")
         self.label_7 = QtWidgets.QLabel(self.centralwidget)
@@ -142,15 +153,15 @@ class Ui_createAccountScreen(object):
         font.setPointSize(5)
         self.label_7.setFont(font)
         self.label_7.setStyleSheet("QLabel {\n"
-"    color: rgb(90, 90, 90);\n"
+"    color: rgb(128, 128, 128);\n"
 "}")
         self.label_7.setObjectName("label_7")
         self.label_8 = QtWidgets.QLabel(self.centralwidget)
         self.label_8.setGeometry(QtCore.QRect(30, 280, 281, 141))
         self.label_8.setObjectName("label_8")
         self.pbReturn = QtWidgets.QPushButton(self.centralwidget)
-        self.pbReturn.setGeometry(QtCore.QRect(50, 20, 91, 61))
-        self.pbReturn.setStyleSheet("background-image: url(:/backArrow.png) ;\n"
+        self.pbReturn.setGeometry(QtCore.QRect(50, 20, 71, 51))
+        self.pbReturn.setStyleSheet("background-image: url(:/backArrowNew.png) ;\n"
 "background-repeat: none;\n"
 "background-size: 100px;")
         self.pbReturn.setText("")

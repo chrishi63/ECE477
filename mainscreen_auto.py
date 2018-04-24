@@ -13,7 +13,8 @@ class Ui_MainScreen(object):
         MainScreen.setObjectName("MainScreen")
         MainScreen.resize(800, 480)
         MainScreen.setAutoFillBackground(False)
-        MainScreen.setStyleSheet("background: #3f729b;")
+        MainScreen.setStyleSheet("background: #2e2e2e;\n"
+"")
         self.centralWidget = QtWidgets.QWidget(MainScreen)
         self.centralWidget.setObjectName("centralWidget")
         self.pbNewAccount = QtWidgets.QPushButton(self.centralWidget)
@@ -54,6 +55,15 @@ class Ui_MainScreen(object):
         self.pbLogin.setObjectName("pbLogin")
         self.batteryIndicator = QtWidgets.QProgressBar(self.centralWidget)
         self.batteryIndicator.setGeometry(QtCore.QRect(700, 40, 51, 21))
+        self.batteryIndicator.setStyleSheet("QProgressBar{\n"
+"    border: 1px solid grey;\n"
+"    border-radius: 5px;\n"
+"    text-align: center;\n"
+"    color: rgb(128, 128, 128);\n"
+"}\n"
+"QProgressBar::chunk{\n"
+"    background-color: rgb(211, 84, 0);\n"
+"}")
         self.batteryIndicator.setProperty("value", 24)
         self.batteryIndicator.setObjectName("batteryIndicator")
         self.line = QtWidgets.QFrame(self.centralWidget)

@@ -143,6 +143,12 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
         self.createAccount = createAccount.CreateAccountScreen()
         self.loginScreen = login.LoginScreen()
         self.dataCollectionScreen = dataCollection.DataCollectionScreen()
+
+        # Change battery
+        self.batteryIndicator.setValue(batteryLevel)
+        self.loginScreen.batteryIndicator.setValue(batteryLevel)
+        self.dataCollectionScreen.batteryIndicator.setValue(batteryLevel)
+        self.createAccount.batteryIndicator.setValue(batteryLevel)
         
         # Main Screen Functionalities:
         self.pbNewAccount.clicked.connect(lambda: self.createNewAccount())

@@ -188,6 +188,8 @@ Would you like to proceed?"
             self.pbSendData.setEnabled(True)
         else:
             self.pbSendData.setEnabled(False)
+            
+    ############################################################################################      
     def batteryDataAvailable(self):
         if self.connection.stopRequestingBatteryData is 1:
             return False

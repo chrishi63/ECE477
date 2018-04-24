@@ -12,6 +12,8 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 480)
+        MainWindow.setStyleSheet("background: #2e2e2e;\n"
+"")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.line = QtWidgets.QFrame(self.centralwidget)
@@ -35,7 +37,7 @@ class Ui_MainWindow(object):
         font.setPointSize(14)
         self.label.setFont(font)
         self.label.setStyleSheet("QLabel {\n"
-"    color: rgb(90, 90, 90);\n"
+"    color: rgb(128, 128, 128);\n"
 "}")
         self.label.setObjectName("label")
         self.txteditPassword = QtWidgets.QLineEdit(self.centralwidget)
@@ -51,13 +53,13 @@ class Ui_MainWindow(object):
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(240, 230, 91, 31))
         self.label_2.setStyleSheet("QLabel {\n"
-"    color: rgb(90, 90, 90);\n"
+"    color: rgb(128, 128, 128);\n"
 "}")
         self.label_2.setObjectName("label_2")
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
         self.label_3.setGeometry(QtCore.QRect(240, 290, 91, 31))
         self.label_3.setStyleSheet("QLabel {\n"
-"    color: rgb(90, 90, 90);\n"
+"    color: rgb(128, 128, 128);\n"
 "}")
         self.label_3.setObjectName("label_3")
         self.pbLogin = QtWidgets.QPushButton(self.centralwidget)
@@ -67,14 +69,14 @@ class Ui_MainWindow(object):
 "    color: #d35400;\n"
 "    border-radius: 20%\n"
 "}\n"
+"QPushButton:disabled {\n"
+"    color:     #A9A9A9;\n"
+"    border:     1px solid #A9A9A9;\n"
+"    border-radius: 20%\n"
+"}\n"
 "QPushButton:default {\n"
 "    background-color:#e5982c;\n"
 "}\n"
-"QPushButton:disabled {\n"
-"    color: 	#A9A9A9;\n"
-"    border: 	1px solid #A9A9A9;\n"
-"    border-radius: 15%\n"
-"}\n"                                  
 "QPushButton:pressed {\n"
 "    position:relative;\n"
 "    top:1px;\n"
@@ -82,8 +84,8 @@ class Ui_MainWindow(object):
 "")
         self.pbLogin.setObjectName("pbLogin")
         self.pbReturn = QtWidgets.QPushButton(self.centralwidget)
-        self.pbReturn.setGeometry(QtCore.QRect(60, 30, 91, 61))
-        self.pbReturn.setStyleSheet("background-image: url(/backArrow.png) ;\n"
+        self.pbReturn.setGeometry(QtCore.QRect(70, 30, 41, 51))
+        self.pbReturn.setStyleSheet("background-image: url(:/backArrowNew.png) ;\n"
 "background-repeat: none;\n"
 "background-size: 100px;")
         self.pbReturn.setText("")
@@ -91,10 +93,19 @@ class Ui_MainWindow(object):
         self.pbReturn.setObjectName("pbReturn")
         self.batteryIndicator = QtWidgets.QProgressBar(self.centralwidget)
         self.batteryIndicator.setGeometry(QtCore.QRect(690, 50, 51, 21))
+        self.batteryIndicator.setStyleSheet("QProgressBar{\n"
+"    border: 1px solid grey;\n"
+"    border-radius: 5px;\n"
+"    text-align: center;\n"
+"    color: rgb(128, 128, 128);\n"
+"}\n"
+"QProgressBar::chunk{\n"
+"    background-color: rgb(211, 84, 0);\n"
+"}")
         self.batteryIndicator.setProperty("value", 24)
         self.batteryIndicator.setObjectName("batteryIndicator")
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
-        self.label_5.setGeometry(QtCore.QRect(10, 310, 281, 141))
+        self.label_5.setGeometry(QtCore.QRect(10, 330, 281, 121))
         self.label_5.setObjectName("label_5")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)

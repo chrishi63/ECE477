@@ -12,6 +12,8 @@ class Ui_DataCollection(object):
     def setupUi(self, DataCollection):
         DataCollection.setObjectName("DataCollection")
         DataCollection.resize(800, 480)
+        DataCollection.setStyleSheet("background: #2e2e2e;\n"
+"")
         self.centralwidget = QtWidgets.QWidget(DataCollection)
         self.centralwidget.setObjectName("centralwidget")
         self.line = QtWidgets.QFrame(self.centralwidget)
@@ -30,10 +32,10 @@ class Ui_DataCollection(object):
 "    background-color:#e5982c;\n"
 "}\n"
 "QPushButton:disabled {\n"
-"    color: 	#A9A9A9;\n"
-"    border: 	1px solid #A9A9A9;\n"
+"    color:     #A9A9A9;\n"
+"    border:     1px solid #A9A9A9;\n"
 "    border-radius: 15%\n"
-"}\n" 
+"}\n"
 "QPushButton:pressed {\n"
 "    position:relative;\n"
 "    top:1px;\n"
@@ -51,10 +53,10 @@ class Ui_DataCollection(object):
 "    background-color:#e5982c;\n"
 "}\n"
 "QPushButton:disabled {\n"
-"    color: 	#A9A9A9;\n"
-"    border: 	1px solid #A9A9A9;\n"
+"    border: 1px solid ;\n"
+"    color: #rgb(122, 122, 122);\n"
 "    border-radius: 15%\n"
-"}\n" 
+"}\n"
 "QPushButton:pressed {\n"
 "    position:relative;\n"
 "    top:1px;\n"
@@ -67,30 +69,57 @@ class Ui_DataCollection(object):
         brush = QtGui.QBrush(QtGui.QColor(211, 84, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(46, 46, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
         brush = QtGui.QBrush(QtGui.QColor(211, 84, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Text, brush)
         brush = QtGui.QBrush(QtGui.QColor(211, 84, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(46, 46, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(46, 46, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
         brush = QtGui.QBrush(QtGui.QColor(211, 84, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(46, 46, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
         brush = QtGui.QBrush(QtGui.QColor(211, 84, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Text, brush)
         brush = QtGui.QBrush(QtGui.QColor(211, 84, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(46, 46, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(46, 46, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Window, brush)
         brush = QtGui.QBrush(QtGui.QColor(211, 84, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(46, 46, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
         brush = QtGui.QBrush(QtGui.QColor(211, 84, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Text, brush)
         brush = QtGui.QBrush(QtGui.QColor(211, 84, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(46, 46, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(46, 46, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
         self.pbGSR.setPalette(palette)
         self.pbGSR.setStyleSheet("QPushButton {\n"
 "    border: 1px solid #d35400;\n"
@@ -101,10 +130,10 @@ class Ui_DataCollection(object):
 "    background-color:#e5982c;\n"
 "}\n"
 "QPushButton:disabled {\n"
-"    color: 	#A9A9A9;\n"
-"    border: 	1px solid #A9A9A9;\n"
+"    border: 1px solid ;\n"
+"    color: #rgb(122, 122, 122);\n"
 "    border-radius: 15%\n"
-"}\n" 
+"}\n"
 "QPushButton:pressed {\n"
 "    position:relative;\n"
 "    top:1px;\n"
@@ -122,10 +151,10 @@ class Ui_DataCollection(object):
 "    background-color:#e5982c;\n"
 "}\n"
 "QPushButton:disabled {\n"
-"    color: 	#A9A9A9;\n"
-"    border: 	1px solid #A9A9A9;\n"
+"    border: 1px solid ;\n"
+"    color: #rgb(122, 122, 122);\n"
 "    border-radius: 15%\n"
-"}\n" 
+"}\n"
 "QPushButton:pressed {\n"
 "    position:relative;\n"
 "    top:1px;\n"
@@ -138,58 +167,85 @@ class Ui_DataCollection(object):
         font.setPointSize(12)
         self.label.setFont(font)
         self.label.setStyleSheet("QLabel {\n"
-"    color: rgb(90, 90, 90);\n"
+"    color: rgb(128, 128, 128);\n"
 "}")
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(480, 220, 47, 16))
-        self.label_2.setAutoFillBackground(True)
+        self.label_2.setAutoFillBackground(False)
         self.label_2.setStyleSheet("QLabel {\n"
-"    color: rgb(90, 90, 90);\n"
+"    color: rgb(128, 128, 128);\n"
 "}")
         self.label_2.setText("")
         self.label_2.setObjectName("label_2")
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
         self.label_3.setGeometry(QtCore.QRect(480, 260, 47, 21))
         palette = QtGui.QPalette()
-        brush = QtGui.QBrush(QtGui.QColor(90, 90, 90))
+        brush = QtGui.QBrush(QtGui.QColor(128, 128, 128))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.WindowText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(90, 90, 90))
+        brush = QtGui.QBrush(QtGui.QColor(46, 46, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(128, 128, 128))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Text, brush)
-        brush = QtGui.QBrush(QtGui.QColor(90, 90, 90))
+        brush = QtGui.QBrush(QtGui.QColor(128, 128, 128))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ButtonText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(90, 90, 90))
+        brush = QtGui.QBrush(QtGui.QColor(46, 46, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(46, 46, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(128, 128, 128))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.WindowText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(90, 90, 90))
+        brush = QtGui.QBrush(QtGui.QColor(46, 46, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(128, 128, 128))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Text, brush)
-        brush = QtGui.QBrush(QtGui.QColor(90, 90, 90))
+        brush = QtGui.QBrush(QtGui.QColor(128, 128, 128))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ButtonText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(90, 90, 90))
+        brush = QtGui.QBrush(QtGui.QColor(46, 46, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(46, 46, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(128, 128, 128))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.WindowText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(90, 90, 90))
+        brush = QtGui.QBrush(QtGui.QColor(46, 46, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(128, 128, 128))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Text, brush)
-        brush = QtGui.QBrush(QtGui.QColor(90, 90, 90))
+        brush = QtGui.QBrush(QtGui.QColor(128, 128, 128))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(46, 46, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(46, 46, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
         self.label_3.setPalette(palette)
         self.label_3.setStyleSheet("QLabel {\n"
-"    color: rgb(90, 90, 90);\n"
+"    color: rgb(128, 128, 128);\n"
 "}")
         self.label_3.setText("")
         self.label_3.setObjectName("label_3")
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
         self.label_4.setGeometry(QtCore.QRect(480, 300, 47, 21))
         self.label_4.setStyleSheet("QLabel {\n"
-"    color: rgb(90, 90, 90);\n"
+"    color: rgb(128, 128, 128);\n"
 "}")
         self.label_4.setText("")
         self.label_4.setObjectName("label_4")
@@ -215,18 +271,27 @@ class Ui_DataCollection(object):
         self.messageText.setObjectName("messageText")
         self.batteryIndicator = QtWidgets.QProgressBar(self.centralwidget)
         self.batteryIndicator.setGeometry(QtCore.QRect(690, 50, 51, 21))
+        self.batteryIndicator.setStyleSheet("QProgressBar{\n"
+"    border: 1px solid grey;\n"
+"    border-radius: 5px;\n"
+"    text-align: center;\n"
+"    color: rgb(128, 128, 128);\n"
+"}\n"
+"QProgressBar::chunk{\n"
+"    background-color: rgb(211, 84, 0);\n"
+"}")
         self.batteryIndicator.setProperty("value", 24)
         self.batteryIndicator.setObjectName("batteryIndicator")
-        self.pbReturn = QtWidgets.QPushButton(self.centralwidget)
-        self.pbReturn.setGeometry(QtCore.QRect(60, 30, 91, 61))
-        self.pbReturn.setStyleSheet("background-image: url(:/backArrow.png) ;\n"
+        self.pbReturn_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.pbReturn_2.setGeometry(QtCore.QRect(70, 30, 51, 51))
+        self.pbReturn_2.setStyleSheet("background-image: url(:/backArrowNew.png) ;\n"
 "background-repeat: none;\n"
 "background-size: 100px;")
-        self.pbReturn.setText("")
-        self.pbReturn.setFlat(True)
-        self.pbReturn.setObjectName("pbReturn")
+        self.pbReturn_2.setText("")
+        self.pbReturn_2.setFlat(True)
+        self.pbReturn_2.setObjectName("pbReturn_2")
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
-        self.label_5.setGeometry(QtCore.QRect(10, 310, 281, 141))
+        self.label_5.setGeometry(QtCore.QRect(10, 330, 281, 121))
         self.label_5.setObjectName("label_5")
         DataCollection.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(DataCollection)

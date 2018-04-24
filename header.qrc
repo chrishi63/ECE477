@@ -4,5 +4,7 @@
         <file>backArrow.png</file>
         <file>footer.png</file>
         <file>logo.png</file>
+        <file>backArrowNew.png</file>
+        <file>brandNameNew.png</file>
     </qresource>
 </RCC>
