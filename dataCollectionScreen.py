@@ -1,15 +1,10 @@
 #!usr/bin/python
 import sys
-#For i2c: (GPIO8 (pin 3) -> SDA GPI09 (pin 5) -> SCL)
-import smbus
 import time
-bus = smbus.SMBus(1) #(1) because using I2C1 port
-##deviceAddress = 0x (check address using sudo i2cdetect -y 1)
-
 
 import PyQt5
 from PyQt5.QtWidgets import *
-
+from PyQt5.QtCore import QTimer
 import datacollection_auto as dataUi
 import serverConnectionController as server
 import stmConnectionController as stm
@@ -26,17 +21,6 @@ class DataCollectionScreen(QMainWindow, dataUi.Ui_DataCollection):
         
     ############################################################################################
     def onSendDataPbPress(self):
-        if (self.heartRate * self.gsr * self.bodyTemp) is 0:
-            emptyMeasurementsPrompt = QMessageBox()
-            emptyMeasurementsPrompt.setIcon(QMessageBox.Question)
-            emptyMeasurementsPrompt.setText("Empty Data Entries")
-            emptyMeasurementsPrompt.setInformativeText("Please take all measurements \
-before attempting to send data to server")
-            emptyMeasurementsPrompt.setStandardButtons(QMessageBox.Ok)
-            emptyMeasurementsPrompt.show()
-            emptyMeasurementsPrompt.exec_()
-            print("empty")
-            return False
         if (self.sendingDataToServerFails()):
             # make a popup window that send data sending failed
             clearDataPrompt = QMessageBox()
@@ -106,13 +90,12 @@ Would you like to proceed?"
     
     ############################################################################################
     def checkStoredHeartRateData(self):
-        print("Checking Stored Heart Rate Data")
         if self.label_2.text() is not "":
             if self.userChoosesToOverrideHeartRateData():
-                #self.messageText.setText("Measuring Heart Rate")
+                self.messageText.setText("Measuring Heart Rate")
                 self.measureHeartRate()
         else:
-            #self.messageText.setText("Measuring Heart Rate")
+            self.messageText.setText("Measuring Heart Rate")
             self.measureHeartRate()
             
     ############################################################################################
@@ -127,45 +110,92 @@ Would you like to proceed?"
     def checkGalvanicSkinResponseData(self):
         if self.label_3.text() is not "":
             if self.userChoosesToOverrideGSRData():
-                #self.messageText.setText("Measuring Body Temperature")
+                self.messageText.setText("Measuring GSR")
                 self.measureGalvanicSkinResponse()
         else:
             self.measureGalvanicSkinResponse()
-            #self.messageText.setText("Measuring Body Temperature")
+            self.messageText.setText("Measuring GSR")
             
     ############################################################################################
     def measureHeartRate(self):
-        print("Measuring Heart Rate")
         if self.stmAddressByte is 0:
             self.heartRate = self.heartRate + 1
+            self.label_2.setText(str(self.heartRate))
         else:
-            self.messageText.setText("")
+            self.disablePushButtons()
             connection = stm.stmConnection()
-            connection.signalSensorToSTM(self.heartRateSignal)
-            self.heartRate = connection.readSensorData()
-        self.label_2.setText(str(self.heartRate))
-        
+            self.connection.signalSensorToSTM(self.heartRateSignal)
+            QTimer.singleShot(10000,self.getHeartRateFromSTM)
+            
     ############################################################################################
     def measureBodyTemperature(self):
         if self.stmAddressByte is 0:
             self.bodyTemp = self.bodyTemp + 1
+            self.label_4.setText(str(self.bodyTemp))
         else:
-            self.messageText.setText("")
-            connection = stm.stmConnection()
-            connection.signalSensorToSTM(self.bodyTempSignal)
-            self.bodyTemp = connection.readSensorData()
-        self.label_4.setText(str(self.bodyTemp))
+            self.disablePushButtons()
+            self.connection.signalSensorToSTM(self.bodyTempSignal)
+            QTimer.singleShot(10000,self.getBodyTempFromSTM)
         
     ############################################################################################
     def measureGalvanicSkinResponse(self):
         if self.stmAddressByte is 0:
             self.gsr = self.gsr + 1
         else:
-            self.messageText.setText("")
-            connection = stm.stmConnection()
-            connection.signalSensorToSTM(self.gsrSignal)
-            self.gsr = connection.readSensorData()
-        self.label_3.setText(str(self.gsr))
+            self.disablePushButtons()
+            self.connection.signalSensorToSTM(self.gsrSignal)
+            QTimer.singleShot(10000,self.getGSRFromSTM)
+        
+    ############################################################################################
+    def getBodyTempFromSTM(self):
+        self.bodyTemp = self.connection.readSensorData()
+        self.updateGUIAfterDataReceived()
+    ############################################################################################
+    def getHeartRateFromSTM(self):
+        self.heartRate = self.connection.readSensorData()
+        self.updateGUIAfterDataReceived()
+    ############################################################################################
+    def getGSRFromSTM(self):
+        self.gsr = self.connection.readSensorData()
+        self.updateGUIAfterDataReceived()
+        
+    ############################################################################################
+    def disablePushButtons(self):
+        self.pbSendData.setEnabled(False)
+        self.pbHeartRate.setEnabled(False)
+        self.pbGSR.setEnabled(False)
+        self.pbBodyTemp.setEnabled(False)
+        
+    ############################################################################################
+    def updateGUIAfterDataReceived(self):
+        self.messageText.setText("")
+        self.pbHeartRate.setEnabled(True)
+        self.pbGSR.setEnabled(True)
+        self.pbBodyTemp.setEnabled(True)
+        if self.gsr > 0:
+            self.label_3.setText(str(self.gsr))
+        if self.bodyTemp > 0:
+            print(self.bodyTemp)
+            self.label_4.setText(str(self.bodyTemp))
+        if self.heartRate > 0:
+            self.label_2.setText(str(self.heartRate))
+        self.updatePbEnable()
+        self.connection.resumeCollectingBatteryData()
+        
+    ############################################################################################
+    def updatePbEnable(self):
+        if (self.heartRate * self.gsr * self.bodyTemp) > 0:
+            self.pbSendData.setEnabled(True)
+        else:
+            self.pbSendData.setEnabled(False)
+    def requestBatteryData(self):
+        if self.connection.stopRequestingBatteryData is 1:
+            return
+        else:
+            self.connection.signalSensorToSTM(self.batterySignal)
+            self.batteryLevel = self.connection.readSensorData()
+            print(self.batteryLevel)
+            #TODO: update battery level for every screen
         
     ############################################################################################
     def __init__(self):
@@ -174,12 +204,15 @@ Would you like to proceed?"
         self.heartRate = 0
         self.gsr = 0
         self.bodyTemp = 0
+        self.batterySignal = 4
         self.heartRateSignal = 3
         self.gsrSignal = 2
         self.bodyTempSignal = 1
-        self.stmAddressByte = 0
+        self.stmAddressByte = 1
         self.userName = ''
         self.password = ''
+        self.connection = stm.stmConnection()
+        self.pbSendData.setEnabled(False)
         
         self.pbHeartRate.clicked.connect(lambda: self.checkStoredHeartRateData())
         self.pbGSR.clicked.connect(lambda: self.checkGalvanicSkinResponseData())
@@ -190,6 +223,9 @@ Would you like to proceed?"
 def main():
     app = QApplication(sys.argv)
     form = DataCollectionScreen()
+    timer = QTimer()
+    timer.timeout.connect(form.requestBatteryData)
+    timer.start(5000)
     form.show()
     sys.exit(app.exec_())
     

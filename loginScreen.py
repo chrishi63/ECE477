@@ -12,7 +12,6 @@ class LoginScreen(QMainWindow, loginUi.Ui_MainWindow):
         self.setupUi(self)
         self.txteditPassword.setEchoMode(QLineEdit.Password)
         self.pbLogin.setEnabled(False)
-        print(len(self.txteditUserName.text()))
         self.txteditUserName.textChanged.connect(self.updatePbEnable)
         self.txteditPassword.textChanged.connect(self.updatePbEnable)
     def updatePbEnable(self):

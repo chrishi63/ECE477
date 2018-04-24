@@ -12,6 +12,8 @@ class Ui_MainScreen(object):
     def setupUi(self, MainScreen):
         MainScreen.setObjectName("MainScreen")
         MainScreen.resize(800, 480)
+        MainScreen.setAutoFillBackground(False)
+        MainScreen.setStyleSheet("background: #3f729b;")
         self.centralWidget = QtWidgets.QWidget(MainScreen)
         self.centralWidget.setObjectName("centralWidget")
         self.pbNewAccount = QtWidgets.QPushButton(self.centralWidget)

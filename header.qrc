@@ -1,2 +1,8 @@
-<!DOCTYPE RCC>
-<RCC version="1.0"/>
+<RCC>
+    <qresource prefix="/">
+        <file>brandName.png</file>
+        <file>backArrow.png</file>
+        <file>footer.png</file>
+        <file>logo.png</file>
+    </qresource>
+</RCC>

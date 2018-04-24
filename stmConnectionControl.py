@@ -13,7 +13,6 @@ class stmConnection():
         bus.write_byte(deviceAddress, sensor)
         return
     def readSensorData():
-        time.sleep(15)
         if self.sensorSignal is 1:
             top = readDataByteFromI2C(deviceAddress)
             bot = readDataByteFromI2C(deviceAddress)

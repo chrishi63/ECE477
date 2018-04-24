@@ -47,7 +47,7 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
             self.showDataCollectionScreen()
         else:
             incorrectLoginPrompt = QMessageBox()
-            incorrectLoginPrompt.setIcon(QMessageBox.Question)
+            incorrectLoginPrompt.setIcon(QMessageBox.Warning)
             incorrectLoginPrompt.setText("Login Failed")
             incorrectLoginPrompt.setInformativeText("Inocrrect username or password")
             incorrectLoginPrompt.setStandardButtons(QMessageBox.Ok)
@@ -70,9 +70,9 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
             self.showDataCollectionScreen()
         else:
             incorrectLoginPrompt = QMessageBox()
-            incorrectLoginPrompt.setIcon(QMessageBox.Question)
+            incorrectLoginPrompt.setIcon(QMessageBox.Warning)
             incorrectLoginPrompt.setText("Create Account Failed")
-            incorrectLoginPrompt.setInformativeText("Inocrrect username or password")
+            incorrectLoginPrompt.setInformativeText("Unable to create account")
             incorrectLoginPrompt.setStandardButtons(QMessageBox.Ok)
             incorrectLoginPrompt.show()
             incorrectLoginPrompt.exec_()
@@ -111,7 +111,6 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
         logoutPrompt.setText("Are you sure you would like to logout?")
         logoutPrompt.setStandardButtons(QMessageBox.Yes |\
             QMessageBox.No)
-##        logoutPrompt.setWindowFlags(Qt.Window | Qt.CustomizeWindowHint)
         logoutPrompt.show()
         if(logoutPrompt.exec_() == 65536):
             return 0

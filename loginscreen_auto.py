@@ -73,7 +73,7 @@ class Ui_MainWindow(object):
 "QPushButton:disabled {\n"
 "    color: 	#A9A9A9;\n"
 "    border: 	1px solid #A9A9A9;\n"
-"    border-radius: 20%\n"
+"    border-radius: 15%\n"
 "}\n"                                  
 "QPushButton:pressed {\n"
 "    position:relative;\n"

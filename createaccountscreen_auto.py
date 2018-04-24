@@ -92,6 +92,11 @@ class Ui_createAccountScreen(object):
 "    color: #d35400;\n"
 "    border-radius: 15%\n"
 "}\n"
+"QPushButton:disabled {\n"
+"    color: 	#A9A9A9;\n"
+"    border: 	1px solid #A9A9A9;\n"
+"    border-radius: 20%\n"
+"}\n" 
 "QPushButton:default {\n"
 "    background-color:#e5982c;\n"
 "}\n"
@@ -143,14 +148,14 @@ class Ui_createAccountScreen(object):
         self.label_8 = QtWidgets.QLabel(self.centralwidget)
         self.label_8.setGeometry(QtCore.QRect(30, 280, 281, 141))
         self.label_8.setObjectName("label_8")
-        self.pbReturn_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pbReturn_2.setGeometry(QtCore.QRect(50, 20, 91, 61))
-        self.pbReturn_2.setStyleSheet("background-image: url(:/backArrow.png) ;\n"
+        self.pbReturn = QtWidgets.QPushButton(self.centralwidget)
+        self.pbReturn.setGeometry(QtCore.QRect(50, 20, 91, 61))
+        self.pbReturn.setStyleSheet("background-image: url(:/backArrow.png) ;\n"
 "background-repeat: none;\n"
 "background-size: 100px;")
-        self.pbReturn_2.setText("")
-        self.pbReturn_2.setFlat(True)
-        self.pbReturn_2.setObjectName("pbReturn_2")
+        self.pbReturn.setText("")
+        self.pbReturn.setFlat(True)
+        self.pbReturn.setObjectName("pbReturn")
         createAccountScreen.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(createAccountScreen)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
