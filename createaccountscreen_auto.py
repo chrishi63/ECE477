@@ -190,5 +190,5 @@ class Ui_createAccountScreen(object):
         self.label_5.setText(_translate("createAccountScreen", "User Name"))
         self.label_6.setText(_translate("createAccountScreen", "Password"))
         self.label_7.setText(_translate("createAccountScreen", "SSN will be used by hospital for any insurance related info and hospital record keeping"))
-        self.label_8.setText(_translate("createAccountScreen", "<html><head/><body><p><img src=\":/logo.png\" width=\"200\" height=\"100\" /></p></body></html>"))
+        self.label_8.setText(_translate("createAccountScreen", "<html><head/><body><p><img src=\"logo.png\" width=\"200\" height=\"100\" /></p></body></html>"))
 
