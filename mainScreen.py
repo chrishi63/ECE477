@@ -125,7 +125,7 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
         self.batteryIndicator.setValue(batteryLevel)
         self.loginScreen.batteryIndicator.setValue(batteryLevel)
         self.dataCollectionScreen.batteryIndicator.setValue(batteryLevel)
-        self.createAccount.batteryIndicator.setValue(batteryLevel)
+        self.createAccount.progressBar.setValue(batteryLevel)
         
 ##################################################################                                                             
     def hideDataCollectionScreen(self):
@@ -145,10 +145,10 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
         self.dataCollectionScreen = dataCollection.DataCollectionScreen()
 
         # Change battery
-        self.batteryIndicator.setValue(batteryLevel)
-        self.loginScreen.batteryIndicator.setValue(batteryLevel)
-        self.dataCollectionScreen.batteryIndicator.setValue(batteryLevel)
-        self.createAccount.batteryIndicator.setValue(batteryLevel)
+        #self.batteryIndicator.setValue(batteryLevel)
+        #self.loginScreen.batteryIndicator.setValue(batteryLevel)
+        #self.dataCollectionScreen.batteryIndicator.setValue(batteryLevel)
+        #self.createAccount.batteryIndicator.setValue(batteryLevel)
         
         # Main Screen Functionalities:
         self.pbNewAccount.clicked.connect(lambda: self.createNewAccount())
