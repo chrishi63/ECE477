@@ -282,14 +282,14 @@ class Ui_DataCollection(object):
 "}")
         self.batteryIndicator.setProperty("value", 24)
         self.batteryIndicator.setObjectName("batteryIndicator")
-        self.pbReturn_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pbReturn_2.setGeometry(QtCore.QRect(70, 30, 51, 51))
-        self.pbReturn_2.setStyleSheet("background-image: url(:/backArrowNew.png) ;\n"
+        self.pbReturn = QtWidgets.QPushButton(self.centralwidget)
+        self.pbReturn.setGeometry(QtCore.QRect(70, 30, 51, 51))
+        self.pbReturn.setStyleSheet("background-image: url(:/backArrowNew.png) ;\n"
 "background-repeat: none;\n"
 "background-size: 100px;")
-        self.pbReturn_2.setText("")
-        self.pbReturn_2.setFlat(True)
-        self.pbReturn_2.setObjectName("pbReturn_2")
+        self.pbReturn.setText("")
+        self.pbReturn.setFlat(True)
+        self.pbReturn.setObjectName("pbReturn")
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
         self.label_5.setGeometry(QtCore.QRect(10, 330, 281, 121))
         self.label_5.setObjectName("label_5")
