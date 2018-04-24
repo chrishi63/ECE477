@@ -175,7 +175,7 @@ class Ui_DataCollection(object):
         self.label_2.setGeometry(QtCore.QRect(480, 220, 47, 16))
         self.label_2.setAutoFillBackground(False)
         self.label_2.setStyleSheet("QLabel {\n"
-"    color: rgb(128, 128, 128);\n"
+"    color: rgb(128, 128, 128)\n"
 "}")
         self.label_2.setText("")
         self.label_2.setObjectName("label_2")
@@ -265,7 +265,7 @@ class Ui_DataCollection(object):
         self.line_4.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_4.setObjectName("line_4")
         self.messageText = QtWidgets.QLabel(self.centralwidget)
-        self.messageText.setGeometry(QtCore.QRect(230, 190, 331, 20))
+        self.messageText.setGeometry(QtCore.QRect(250, 190, 331, 20))
         self.messageText.setText("")
         self.messageText.setAlignment(QtCore.Qt.AlignCenter)
         self.messageText.setObjectName("messageText")

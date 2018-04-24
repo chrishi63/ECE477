@@ -18,6 +18,9 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.line = QtWidgets.QFrame(self.centralwidget)
         self.line.setGeometry(QtCore.QRect(0, 110, 801, 20))
+        self.line.setStyleSheet("Line{\n"
+"    color: rgb(128, 128, 128);\n"
+"}")
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
@@ -29,6 +32,7 @@ class Ui_MainWindow(object):
 "    padding: 0 8px;\n"
 "    background: transparent;\n"
 "    selection-background-color: darkgray;\n"
+"    color: rgb(128, 128, 128);\n"
 "}")
         self.txteditUserName.setObjectName("txteditUserName")
         self.label = QtWidgets.QLabel(self.centralwidget)
@@ -48,6 +52,7 @@ class Ui_MainWindow(object):
 "    padding: 0 8px;\n"
 "    background: transparent;\n"
 "    selection-background-color: darkgray;\n"
+"    color: rgb(128, 128, 128);\n"
 "}")
         self.txteditPassword.setObjectName("txteditPassword")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)

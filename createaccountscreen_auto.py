@@ -51,6 +51,7 @@ class Ui_createAccountScreen(object):
 "    padding: 0 8px;\n"
 "    background: transparent;\n"
 "    selection-background-color: darkgray;\n"
+"    color: rgb(128, 128, 128);\n"
 "}")
         self.txteditFirstName.setText("")
         self.txteditFirstName.setFrame(True)
@@ -64,6 +65,7 @@ class Ui_createAccountScreen(object):
 "    padding: 0 8px;\n"
 "    background: transparent;\n"
 "    selection-background-color: darkgray;\n"
+"    color: rgb(128, 128, 128);\n"
 "}")
         self.txteditLastName.setObjectName("txteditLastName")
         self.txteditSSN = QtWidgets.QLineEdit(self.centralwidget)
@@ -74,6 +76,7 @@ class Ui_createAccountScreen(object):
 "    padding: 0 8px;\n"
 "    background: transparent;\n"
 "    selection-background-color: darkgray;\n"
+"    color: rgb(128, 128, 128);\n"
 "}")
         self.txteditSSN.setObjectName("txteditSSN")
         self.txteditUserName = QtWidgets.QLineEdit(self.centralwidget)
@@ -84,6 +87,7 @@ class Ui_createAccountScreen(object):
 "    padding: 0 8px;\n"
 "    background: transparent;\n"
 "    selection-background-color: darkgray;\n"
+"    color: rgb(128, 128, 128);\n"
 "}")
         self.txteditUserName.setObjectName("txteditUserName")
         self.txteditPassword = QtWidgets.QLineEdit(self.centralwidget)
@@ -94,6 +98,7 @@ class Ui_createAccountScreen(object):
 "    padding: 0 8px;\n"
 "    background: transparent;\n"
 "    selection-background-color: darkgray;\n"
+"    color: rgb(128, 128, 128);\n"
 "}")
         self.txteditPassword.setObjectName("txteditPassword")
         self.pbCreateAccount = QtWidgets.QPushButton(self.centralwidget)
