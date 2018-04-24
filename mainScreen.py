@@ -47,7 +47,7 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
             self.showDataCollectionScreen()
         else:
             incorrectLoginPrompt = QMessageBox()
-            incorrectLoginPrompt.setIcon(QMessageBox.Question)
+            incorrectLoginPrompt.setIcon(QMessageBox.Warning)
             incorrectLoginPrompt.setText("Login Failed")
             incorrectLoginPrompt.setInformativeText("Inocrrect username or password")
             incorrectLoginPrompt.setStandardButtons(QMessageBox.Ok)
@@ -70,9 +70,9 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
             self.showDataCollectionScreen()
         else:
             incorrectLoginPrompt = QMessageBox()
-            incorrectLoginPrompt.setIcon(QMessageBox.Question)
+            incorrectLoginPrompt.setIcon(QMessageBox.Warning)
             incorrectLoginPrompt.setText("Create Account Failed")
-            incorrectLoginPrompt.setInformativeText("Inocrrect username or password")
+            incorrectLoginPrompt.setInformativeText("Unable to create account")
             incorrectLoginPrompt.setStandardButtons(QMessageBox.Ok)
             incorrectLoginPrompt.show()
             incorrectLoginPrompt.exec_()
@@ -111,12 +111,22 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
         logoutPrompt.setText("Are you sure you would like to logout?")
         logoutPrompt.setStandardButtons(QMessageBox.Yes |\
             QMessageBox.No)
-##        logoutPrompt.setWindowFlags(Qt.Window | Qt.CustomizeWindowHint)
         logoutPrompt.show()
         if(logoutPrompt.exec_() == 65536):
             return 0
         else:
             return 1
+    def requestBatteryData(self):
+        batteryLevel = self.dataCollectionScreen.batteryDataAvailable()
+        if batteryLevel:
+            print(batteryLevel)
+            self.updateBatteryIndicators(batteryLevel)
+    def updateBatteryIndicators(self, batteryLevel):
+        self.batteryIndicator.setValue(batteryLevel)
+        self.loginScreen.batteryIndicator.setValue(batteryLevel)
+        self.dataCollectionScreen.batteryIndicator.setValue(batteryLevel)
+        self.createAccount.batteryIndicator.setValue(batteryLevel)
+        
 ##################################################################                                                             
     def hideDataCollectionScreen(self):
 ##        self.showFullScreen()
@@ -133,6 +143,12 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
         self.createAccount = createAccount.CreateAccountScreen()
         self.loginScreen = login.LoginScreen()
         self.dataCollectionScreen = dataCollection.DataCollectionScreen()
+
+        # Change battery
+        self.batteryIndicator.setValue(batteryLevel)
+        self.loginScreen.batteryIndicator.setValue(batteryLevel)
+        self.dataCollectionScreen.batteryIndicator.setValue(batteryLevel)
+        self.createAccount.batteryIndicator.setValue(batteryLevel)
         
         # Main Screen Functionalities:
         self.pbNewAccount.clicked.connect(lambda: self.createNewAccount())
@@ -152,6 +168,9 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
 def main():
     app = QApplication(sys.argv)
     form = MainScreen()
+    timer = QTimer()
+    timer.timeout.connect(form.requestBatteryData)
+    timer.start(5000)
     form.show()
 ##    form.showFullScreen()
     sys.exit(app.exec_())
