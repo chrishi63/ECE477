@@ -188,14 +188,13 @@ Would you like to proceed?"
             self.pbSendData.setEnabled(True)
         else:
             self.pbSendData.setEnabled(False)
-    def requestBatteryData(self):
+    def batteryDataAvailable(self):
         if self.connection.stopRequestingBatteryData is 1:
-            return
+            return False
         else:
             self.connection.signalSensorToSTM(self.batterySignal)
             self.batteryLevel = self.connection.readSensorData()
-            print(self.batteryLevel)
-            #TODO: update battery level for every screen
+            return self.batteryLevel
         
     ############################################################################################
     def __init__(self):
@@ -223,9 +222,6 @@ Would you like to proceed?"
 def main():
     app = QApplication(sys.argv)
     form = DataCollectionScreen()
-    timer = QTimer()
-    timer.timeout.connect(form.requestBatteryData)
-    timer.start(5000)
     form.show()
     sys.exit(app.exec_())
     

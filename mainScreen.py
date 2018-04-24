@@ -116,6 +116,17 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
             return 0
         else:
             return 1
+    def requestBatteryData(self):
+        batteryLevel = self.dataCollectionScreen.batteryDataAvailable()
+        if batteryLevel:
+            print(batteryLevel)
+            self.updateBatteryIndicators(batteryLevel)
+    def updateBatteryIndicators(self, batteryLevel):
+        self.batteryIndicator.setValue(batteryLevel)
+        self.loginScreen.batteryIndicator.setValue(batteryLevel)
+        self.dataCollectionScreen.batteryIndicator.setValue(batteryLevel)
+        self.createAccount.batteryIndicator.setValue(batteryLevel)
+        
 ##################################################################                                                             
     def hideDataCollectionScreen(self):
 ##        self.showFullScreen()
@@ -151,6 +162,9 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
 def main():
     app = QApplication(sys.argv)
     form = MainScreen()
+    timer = QTimer()
+    timer.timeout.connect(form.requestBatteryData)
+    timer.start(5000)
     form.show()
 ##    form.showFullScreen()
     sys.exit(app.exec_())
