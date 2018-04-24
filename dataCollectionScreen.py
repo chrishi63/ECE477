@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import QTimer
 import datacollection_auto as dataUi
 import serverConnectionController as server
-import stmConnectionController as stm
+import stmConnectionControl as stm
 
 class DataCollectionScreen(QMainWindow, dataUi.Ui_DataCollection):
     ############################################################################################
@@ -134,8 +134,7 @@ Would you like to proceed?"
             self.label_4.setText(str(self.bodyTemp))
         else:
             self.disablePushButtons()
-            self.connection.signalSensorToSTM(self.bodyTempSignal)
-            QTimer.singleShot(10000,self.getBodyTempFromSTM)
+            QTimer.singleShot(5000,self.getBodyTempFromSTM)
         
     ############################################################################################
     def measureGalvanicSkinResponse(self):
@@ -144,10 +143,12 @@ Would you like to proceed?"
         else:
             self.disablePushButtons()
             self.connection.signalSensorToSTM(self.gsrSignal)
-            QTimer.singleShot(10000,self.getGSRFromSTM)
+            self.getGSRFromSTM()
+            #QTimer.singleShot(10000,self.getGSRFromSTM)
         
     ############################################################################################
     def getBodyTempFromSTM(self):
+        self.connection.signalSensorToSTM(self.bodyTempSignal)
         self.bodyTemp = self.connection.readSensorData()
         self.updateGUIAfterDataReceived()
     ############################################################################################

@@ -170,7 +170,7 @@ def main():
     form = MainScreen()
     timer = QTimer()
     timer.timeout.connect(form.requestBatteryData)
-    timer.start(5000)
+    timer.start(300000)
     form.show()
 ##    form.showFullScreen()
     sys.exit(app.exec_())

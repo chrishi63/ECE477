@@ -166,7 +166,7 @@ class Ui_createAccountScreen(object):
         self.label_8.setObjectName("label_8")
         self.pbReturn = QtWidgets.QPushButton(self.centralwidget)
         self.pbReturn.setGeometry(QtCore.QRect(50, 20, 71, 51))
-        self.pbReturn.setStyleSheet("background-image: url(:/backArrowNew.png) ;\n"
+        self.pbReturn.setStyleSheet("background-image: url(backArrowNew.png) ;\n"
 "background-repeat: none;\n"
 "background-size: 100px;")
         self.pbReturn.setText("")
