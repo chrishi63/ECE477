@@ -279,7 +279,7 @@ class Ui_DataCollection(object):
         self.batteryIndicator.setObjectName("batteryIndicator")
         self.pbReturn = QtWidgets.QPushButton(self.centralwidget)
         self.pbReturn.setGeometry(QtCore.QRect(70, 30, 51, 51))
-        self.pbReturn.setStyleSheet("background-image: url(:/backArrowNew.png) ;\n"
+        self.pbReturn.setStyleSheet("background-image: url(backArrowNew.png) ;\n"
 "background-repeat: none;\n"
 "background-size: 100px;")
         self.pbReturn.setText("")
@@ -308,5 +308,5 @@ class Ui_DataCollection(object):
         self.pbGSR.setText(_translate("DataCollection", "Galvanic Skin Response"))
         self.pbBodyTemp.setText(_translate("DataCollection", "Body Temperature"))
         self.label.setText(_translate("DataCollection", "Collect Sensor Data"))
-        self.label_5.setText(_translate("DataCollection", "<html><head/><body><p><img src=\":/logo.png\" width=\"200\" height=\"100\" /></p></body></html>"))
+        self.label_5.setText(_translate("DataCollection", "<html><head/><body><p><img src=\"logo.png\" width=\"200\" height=\"100\" /></p></body></html>"))
 

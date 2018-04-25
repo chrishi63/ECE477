@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import QTimer
 import datacollection_auto as dataUi
 import serverConnectionController as server
-import stmConnectionControl as stm
+import stmConnectionController as stm
 
 class DataCollectionScreen(QMainWindow, dataUi.Ui_DataCollection):
     ############################################################################################
@@ -18,6 +18,7 @@ class DataCollectionScreen(QMainWindow, dataUi.Ui_DataCollection):
         self.label_2.setText("")
         self.label_3.setText("")
         self.label_4.setText("")
+        self.updatePbEnable()
         
     ############################################################################################
     def onSendDataPbPress(self):

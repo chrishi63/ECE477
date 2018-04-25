@@ -77,9 +77,6 @@ class Ui_MainScreen(object):
         self.menuBar.setGeometry(QtCore.QRect(0, 0, 800, 21))
         self.menuBar.setObjectName("menuBar")
         MainScreen.setMenuBar(self.menuBar)
-        self.mainToolBar = QtWidgets.QToolBar(MainScreen)
-        self.mainToolBar.setObjectName("mainToolBar")
-        MainScreen.addToolBar(QtCore.Qt.TopToolBarArea, self.mainToolBar)
         self.statusBar = QtWidgets.QStatusBar(MainScreen)
         self.statusBar.setObjectName("statusBar")
         MainScreen.setStatusBar(self.statusBar)
@@ -92,6 +89,6 @@ class Ui_MainScreen(object):
         MainScreen.setWindowTitle(_translate("MainScreen", "MainScreen"))
         self.pbNewAccount.setText(_translate("MainScreen", "Setup New Account"))
         self.pbLogin.setText(_translate("MainScreen", "Login"))
-        self.label.setText(_translate("MainScreen", "<html><head/><body><p><img src=\":/brandName.png\" width = \"500\" height = \"55\"/></p></body></html>"))
-        self.label_5.setText(_translate("MainScreen", "<html><head/><body><p><img src=\":/logo.png\" width=\"200\" height=\"100\" /></p></body></html>"))
+        self.label.setText(_translate("MainScreen", "<html><head/><body><p><img src=\"brandName.png\" width = \"500\" height = \"55\"/></p></body></html>"))
+        self.label_5.setText(_translate("MainScreen", "<html><head/><body><p><img src=\"logo.png\" width=\"200\" height=\"100\" /></p></body></html>"))
 

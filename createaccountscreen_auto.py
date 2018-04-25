@@ -161,7 +161,7 @@ class Ui_createAccountScreen(object):
         self.label_8.setObjectName("label_8")
         self.pbReturn = QtWidgets.QPushButton(self.centralwidget)
         self.pbReturn.setGeometry(QtCore.QRect(50, 20, 71, 51))
-        self.pbReturn.setStyleSheet("background-image: url(:/backArrowNew.png) ;\n"
+        self.pbReturn.setStyleSheet("background-image: url(backArrowNew.png) ;\n"
 "background-repeat: none;\n"
 "background-size: 100px;")
         self.pbReturn.setText("")
@@ -206,5 +206,5 @@ class Ui_createAccountScreen(object):
         self.label_5.setText(_translate("createAccountScreen", "SSN"))
         self.label_6.setText(_translate("createAccountScreen", "Password"))
         self.label_7.setText(_translate("createAccountScreen", "SSN will be used by hospital for any insurance related info and hospital record keeping"))
-        self.label_8.setText(_translate("createAccountScreen", "<html><head/><body><p><img src=\":/logo.png\" width=\"200\" height=\"100\" /></p></body></html>"))
+        self.label_8.setText(_translate("createAccountScreen", "<html><head/><body><p><img src=\"logo.png\" width=\"200\" height=\"100\" /></p></body></html>"))
 
