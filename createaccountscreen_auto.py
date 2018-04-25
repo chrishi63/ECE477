@@ -16,11 +16,6 @@ class Ui_createAccountScreen(object):
 "")
         self.centralwidget = QtWidgets.QWidget(createAccountScreen)
         self.centralwidget.setObjectName("centralwidget")
-        self.line = QtWidgets.QFrame(self.centralwidget)
-        self.line.setGeometry(QtCore.QRect(0, 100, 801, 16))
-        self.line.setFrameShape(QtWidgets.QFrame.HLine)
-        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line.setObjectName("line")
         self.progressBar = QtWidgets.QProgressBar(self.centralwidget)
         self.progressBar.setGeometry(QtCore.QRect(690, 40, 51, 23))
         self.progressBar.setStyleSheet("QProgressBar{\n"
@@ -135,13 +130,13 @@ class Ui_createAccountScreen(object):
 "}")
         self.label_3.setObjectName("label_3")
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
-        self.label_4.setGeometry(QtCore.QRect(250, 310, 141, 21))
+        self.label_4.setGeometry(QtCore.QRect(250, 230, 141, 21))
         self.label_4.setStyleSheet("QLabel {\n"
 "    color: rgb(128, 128, 128);\n"
 "}")
         self.label_4.setObjectName("label_4")
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
-        self.label_5.setGeometry(QtCore.QRect(250, 230, 141, 21))
+        self.label_5.setGeometry(QtCore.QRect(250, 310, 141, 21))
         self.label_5.setStyleSheet("QLabel {\n"
 "    color: rgb(128, 128, 128);\n"
 "}")
@@ -153,9 +148,9 @@ class Ui_createAccountScreen(object):
 "}")
         self.label_6.setObjectName("label_6")
         self.label_7 = QtWidgets.QLabel(self.centralwidget)
-        self.label_7.setGeometry(QtCore.QRect(250, 340, 301, 16))
+        self.label_7.setGeometry(QtCore.QRect(250, 340, 351, 16))
         font = QtGui.QFont()
-        font.setPointSize(5)
+        font.setPointSize(7)
         self.label_7.setFont(font)
         self.label_7.setStyleSheet("QLabel {\n"
 "    color: rgb(128, 128, 128);\n"
@@ -166,14 +161,13 @@ class Ui_createAccountScreen(object):
         self.label_8.setObjectName("label_8")
         self.pbReturn = QtWidgets.QPushButton(self.centralwidget)
         self.pbReturn.setGeometry(QtCore.QRect(50, 20, 71, 51))
-        self.pbReturn.setStyleSheet("background-image: url(backArrowNew.png) ;\n"
+        self.pbReturn.setStyleSheet("background-image: url(:/backArrowNew.png) ;\n"
 "background-repeat: none;\n"
 "background-size: 100px;")
         self.pbReturn.setText("")
         self.pbReturn.setFlat(True)
         self.pbReturn.setObjectName("pbReturn")
         self.label_8.raise_()
-        self.line.raise_()
         self.progressBar.raise_()
         self.label.raise_()
         self.txteditFirstName.raise_()
@@ -208,9 +202,9 @@ class Ui_createAccountScreen(object):
         self.pbCreateAccount.setText(_translate("createAccountScreen", "Create Account"))
         self.label_2.setText(_translate("createAccountScreen", "Patient First Name"))
         self.label_3.setText(_translate("createAccountScreen", "Patient Last Name"))
-        self.label_4.setText(_translate("createAccountScreen", "Patient SSN"))
-        self.label_5.setText(_translate("createAccountScreen", "User Name"))
+        self.label_4.setText(_translate("createAccountScreen", "User Name"))
+        self.label_5.setText(_translate("createAccountScreen", "SSN"))
         self.label_6.setText(_translate("createAccountScreen", "Password"))
         self.label_7.setText(_translate("createAccountScreen", "SSN will be used by hospital for any insurance related info and hospital record keeping"))
-        self.label_8.setText(_translate("createAccountScreen", "<html><head/><body><p><img src=\"logo.png\" width=\"200\" height=\"100\" /></p></body></html>"))
+        self.label_8.setText(_translate("createAccountScreen", "<html><head/><body><p><img src=\":/logo.png\" width=\"200\" height=\"100\" /></p></body></html>"))
 

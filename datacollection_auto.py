@@ -16,11 +16,6 @@ class Ui_DataCollection(object):
 "")
         self.centralwidget = QtWidgets.QWidget(DataCollection)
         self.centralwidget.setObjectName("centralwidget")
-        self.line = QtWidgets.QFrame(self.centralwidget)
-        self.line.setGeometry(QtCore.QRect(0, 110, 801, 21))
-        self.line.setFrameShape(QtWidgets.QFrame.HLine)
-        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line.setObjectName("line")
         self.pbSendData = QtWidgets.QPushButton(self.centralwidget)
         self.pbSendData.setGeometry(QtCore.QRect(310, 370, 181, 41))
         self.pbSendData.setStyleSheet("QPushButton {\n"
@@ -53,8 +48,8 @@ class Ui_DataCollection(object):
 "    background-color:#e5982c;\n"
 "}\n"
 "QPushButton:disabled {\n"
-"    border: 1px solid ;\n"
-"    color: #rgb(122, 122, 122);\n"
+"    border: 1px solid rgb(122, 122, 122);\n"
+"    color: rgb(122, 122, 122);\n"
 "    border-radius: 15%\n"
 "}\n"
 "QPushButton:pressed {\n"
@@ -102,16 +97,16 @@ class Ui_DataCollection(object):
         brush = QtGui.QBrush(QtGui.QColor(46, 46, 46))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(211, 84, 0))
+        brush = QtGui.QBrush(QtGui.QColor(122, 122, 122))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.WindowText, brush)
         brush = QtGui.QBrush(QtGui.QColor(46, 46, 46))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
-        brush = QtGui.QBrush(QtGui.QColor(211, 84, 0))
+        brush = QtGui.QBrush(QtGui.QColor(122, 122, 122))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Text, brush)
-        brush = QtGui.QBrush(QtGui.QColor(211, 84, 0))
+        brush = QtGui.QBrush(QtGui.QColor(122, 122, 122))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ButtonText, brush)
         brush = QtGui.QBrush(QtGui.QColor(46, 46, 46))
@@ -130,8 +125,8 @@ class Ui_DataCollection(object):
 "    background-color:#e5982c;\n"
 "}\n"
 "QPushButton:disabled {\n"
-"    border: 1px solid ;\n"
-"    color: #rgb(122, 122, 122);\n"
+"    border: 1px solid rgb(122, 122, 122);\n"
+"    color: rgb(122, 122, 122);\n"
 "    border-radius: 15%\n"
 "}\n"
 "QPushButton:pressed {\n"
@@ -151,8 +146,8 @@ class Ui_DataCollection(object):
 "    background-color:#e5982c;\n"
 "}\n"
 "QPushButton:disabled {\n"
-"    border: 1px solid ;\n"
-"    color: #rgb(122, 122, 122);\n"
+"    border: 1px solid rgb(122, 122, 122);\n"
+"    color: rgb(122, 122, 122);\n"
 "    border-radius: 15%\n"
 "}\n"
 "QPushButton:pressed {\n"
@@ -265,7 +260,7 @@ class Ui_DataCollection(object):
         self.line_4.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_4.setObjectName("line_4")
         self.messageText = QtWidgets.QLabel(self.centralwidget)
-        self.messageText.setGeometry(QtCore.QRect(250, 190, 331, 20))
+        self.messageText.setGeometry(QtCore.QRect(240, 190, 331, 20))
         self.messageText.setText("")
         self.messageText.setAlignment(QtCore.Qt.AlignCenter)
         self.messageText.setObjectName("messageText")
@@ -284,7 +279,7 @@ class Ui_DataCollection(object):
         self.batteryIndicator.setObjectName("batteryIndicator")
         self.pbReturn = QtWidgets.QPushButton(self.centralwidget)
         self.pbReturn.setGeometry(QtCore.QRect(70, 30, 51, 51))
-        self.pbReturn.setStyleSheet("background-image: url(backArrowNew.png) ;\n"
+        self.pbReturn.setStyleSheet("background-image: url(:/backArrowNew.png) ;\n"
 "background-repeat: none;\n"
 "background-size: 100px;")
         self.pbReturn.setText("")
@@ -313,5 +308,5 @@ class Ui_DataCollection(object):
         self.pbGSR.setText(_translate("DataCollection", "Galvanic Skin Response"))
         self.pbBodyTemp.setText(_translate("DataCollection", "Body Temperature"))
         self.label.setText(_translate("DataCollection", "Collect Sensor Data"))
-        self.label_5.setText(_translate("DataCollection", "<html><head/><body><p><img src=\"logo.png\" width=\"200\" height=\"100\" /></p></body></html>"))
+        self.label_5.setText(_translate("DataCollection", "<html><head/><body><p><img src=\":/logo.png\" width=\"200\" height=\"100\" /></p></body></html>"))
 
