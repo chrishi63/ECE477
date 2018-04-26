@@ -82,10 +82,10 @@ class serverConnection():
     ############################################################################################
     def addSensorData(self, userName, password, bodyTemp, gsr, heartRate):
         #go to table for self.user
-        dateQuery = ("SELECT CURDATE();")
+        dateQuery = ("SELECT DATE_SUB(NOW(), INTERVAL 5 HOUR);")
         self.cur.execute(dateQuery)
         for value in self.cur:
-            date = value[0]
+            date = str(value[0]).split()[0]
             print(date)
         insertQuery = ('INSERT INTO datasets(heart,sweat,temp,time,user_id) \
                         VALUES (' + str(heartRate) + ',' + str(gsr) + ',' + str(bodyTemp) + ',' + \
