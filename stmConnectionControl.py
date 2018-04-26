@@ -19,63 +19,75 @@ class stmConnection():
             try:
                 bus.write_byte(deviceAddress, sensor)
             except:
-                print("STM Error 1")
+                print("STM write Error")
                 try:
                     bus.write_byte(deviceAddress,sensor)
                 except:
+                    print("STM write Error")
                     try:
                         bus.write_byte(deviceAddress,sensor)
                     except:
+                        print("STM write Error")
                         bus.write_byte(deviceAddress,sensor)
+                        return
         else:
             if self.stopRequestingBatteryData is 0:
+                print("Requesting Battery Data")
                 self.sensorSignal = sensor
                 try:
                     bus.write_byte(deviceAddress, sensor)
                 except:
+                    print("STM write Error")
                     try:
                         bus.write_byte(deviceAddress,sensor)
                     except:
+                        print("STM write Error")
                         bus.write_byte(deviceAddress,sensor)
+                        return
+            else:
+                print("Cannot Request Battery Data")
         return
     
     def readSensorData(self):
+        print("Reading sensor data from Sensor:")
+        print(self.sensorSignal)
         if self.sensorSignal is 1:
+            print("Reading 1")
             try:
                 top = bus.read_byte(deviceAddress)
                 bot = bus.read_byte(deviceAddress)
                 return float(str(top) + '.' + str(bot))
             except:
-                print("STM Error 1")
+                print("STM Read Error 1")
                 try:
                     top = bus.read_byte(deviceAddress)
                     bot = bus.read_byte(deviceAddress)
                     return float(str(top) + '.' + str(bot))
                 except:
-                    print("STM Error 2")
-                    connection = stm.stmConnection()
-                    connection.signalSensorToSTM(self.sensorSignal)
-                    return connection.readSensorData()
-        elif self.sensorSignal is 2 or 3:
+                    print("STM Read Error 2")
+                    return False
+        elif self.sensorSignal is 2 or self.sensorSignal is 3:
+            print("Reading 2 or 3")
             try:
                 topNum = bin(bus.read_byte(deviceAddress))
                 botNum = bin(bus.read_byte(deviceAddress))
                 return (int(topNum.split('b')[1] + botNum.split('b')[1],2))
             except:
-                print("STM Error 1")
+                print("STM Read Error 1")
                 try:
                     topNum = bin(bus.read_byte(deviceAddress))
                     botNum = bin(bus.read_byte(deviceAddress))
                     return (int(topNum.split('b')[1] + botNum.split('b')[1],2))
                 except:
-                    print("STM Error 2")
-                    connection = stm.stmConnection()
-                    connection.signalSensorToSTM(self.sensorSignal)
-                    return connection.readSensorData()
-        else:
+                    print("STM Read Error 2")
+                    return False
+        elif self.sensorSignal is 4:
+            print("Reading Battery Data")
             topNum = bin(bus.read_byte(deviceAddress))
             botNum = bin(bus.read_byte(deviceAddress))
             newNum = int('0b' + topNum.split('b')[1] + botNum.split('b')[1][0:3],2)
             floatNum = round(((.00976 * newNum) / 7) * 100)
             print(str(floatNum) + '%')
             return floatNum
+        else:
+            return False

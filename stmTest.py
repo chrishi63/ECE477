@@ -19,6 +19,7 @@ def readDataByteFromI2C(address):
     return bus.read_byte(address)
 
 def getTemperature(address):
+    sendDataByteThroughI2C(deviceAddress, 1)
     wait_5()
     sendDataByteThroughI2C(deviceAddress, 1)
     top = readDataByteFromI2C(deviceAddress)
@@ -27,6 +28,8 @@ def getTemperature(address):
     
 
 def getGSC(address):
+    sendDataByteThroughI2C(deviceAddress, 2)
+    wait_5()
     sendDataByteThroughI2C(deviceAddress, 2)
     topNum = bin(readDataByteFromI2C(deviceAddress))
     botNum = bin(readDataByteFromI2C(deviceAddress))
@@ -88,9 +91,9 @@ if __name__ == "__main__":
     #        wait_2()
     #        print("Error occured earlier")
     #        print(getTemperature(deviceAddress))
-    getBatteryVoltage(deviceAddress)
+    #getBatteryVoltage(deviceAddress)
     #print(wait_2())
-    #print(getTemperature(deviceAddress))
+    print(getTemperature(deviceAddress))
     #print(getGSC(deviceAddress))
     #print(getPulse(deviceAddress))
     #sendDataByteThroughI2c()
