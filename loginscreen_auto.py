@@ -82,7 +82,7 @@ class Ui_MainWindow(object):
         self.pbLogin.setObjectName("pbLogin")
         self.pbReturn = QtWidgets.QPushButton(self.centralwidget)
         self.pbReturn.setGeometry(QtCore.QRect(70, 30, 41, 51))
-        self.pbReturn.setStyleSheet("background-image: url(:/backArrowNew.png) ;\n"
+        self.pbReturn.setStyleSheet("background-image: url(backArrowNew.png) ;\n"
 "background-repeat: none;\n"
 "background-size: 100px;")
         self.pbReturn.setText("")
@@ -123,5 +123,5 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "User Name"))
         self.label_3.setText(_translate("MainWindow", "Password"))
         self.pbLogin.setText(_translate("MainWindow", "Login"))
-        self.label_5.setText(_translate("MainWindow", "<html><head/><body><p><img src=\":/logo.png\" width=\"200\" height=\"100\" /></p></body></html>"))
+        self.label_5.setText(_translate("MainWindow", "<html><head/><body><p><img src=\"logo.png\" width=\"200\" height=\"100\" /></p></body></html>"))
 

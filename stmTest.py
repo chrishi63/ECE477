@@ -40,6 +40,15 @@ def getPulse(address):
     botNum = bin(readDataByteFromI2C(deviceAddress))
     return (int(topNum.split('b')[1] + botNum.split('b')[1],2))
 
+def getBatteryVoltage(address):
+    sendDataByteThroughI2C(deviceAddress, 4)
+    topNum = bin(readDataByteFromI2C(deviceAddress))
+    botNum = bin(readDataByteFromI2C(deviceAddress))
+    newNum = int('0b' + topNum.split('b')[1] + botNum.split('b')[1][0:3],2)
+    floatNum = round(((.00976 * newNum) / 7) * 100)
+    print(str(floatNum) + '%')
+    return floatNum
+
 def wait_10():
     timer_a = time.time()
     timer_b = time.time()
@@ -73,12 +82,13 @@ def wait_2():
 ############################################################################################
 if __name__ == "__main__":
     deviceAddress = 0x0a
-    try:
-        print(getTemperature(deviceAddress))
-    except:
-            wait_2()
-            print("Error occured earlier")
-            print(getTemperature(deviceAddress))
+    #try:
+    #    print(getTemperature(deviceAddress))
+    #except:
+    #        wait_2()
+    #        print("Error occured earlier")
+    #        print(getTemperature(deviceAddress))
+    getBatteryVoltage(deviceAddress)
     #print(wait_2())
     #print(getTemperature(deviceAddress))
     #print(getGSC(deviceAddress))

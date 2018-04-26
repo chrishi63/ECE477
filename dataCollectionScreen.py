@@ -118,6 +118,7 @@ Would you like to proceed?"
             
     ############################################################################################
     def measureHeartRate(self):
+        self.messageText.setText("Measuring Heart Rate")
         if self.stmAddressByte is 0:
             self.heartRate = self.heartRate + 1
             self.label_2.setText(str(self.heartRate))
