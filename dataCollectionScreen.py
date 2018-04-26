@@ -13,7 +13,7 @@ import stmTest
 class DataCollectionScreen(QMainWindow, dataUi.Ui_DataCollection):
     ############################################################################################
     def clearData(self):
-        self.heartRate = 0
+        self.heartRate = -1
         self.gsr = 0
         self.bodyTemp = 0
         self.label_2.setText("")
