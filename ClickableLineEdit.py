@@ -9,6 +9,6 @@ class ClickableLineEdit(QLineEdit):
     clicked = pyqtSignal()
 
     def mousePressEvent(self, event):
-        if event.button() == QtLeftButton: self.clicked.emit()
+        if event.button() == Qt.LeftButton: self.clicked.emit()
         else: super().mousePressEvent(event)
 
