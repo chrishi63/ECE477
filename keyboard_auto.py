@@ -209,7 +209,7 @@ class Ui_MainWindow(object):
 "")
         self.Key9.setObjectName("Key9")
         self.backspace = QtWidgets.QPushButton(self.centralwidget)
-        self.backspace.setGeometry(QtCore.QRect(700, 70, 91, 51))
+        self.backspace.setGeometry(QtCore.QRect(700, 70, 91, 55))
         font = QtGui.QFont()
         font.setPointSize(7)
         self.backspace.setFont(font)
@@ -905,7 +905,7 @@ class Ui_MainWindow(object):
 "")
         self.Key4.setObjectName("Key4")
         self.enter = QtWidgets.QPushButton(self.centralwidget)
-        self.enter.setGeometry(QtCore.QRect(600, 280, 111, 51))
+        self.enter.setGeometry(QtCore.QRect(600, 280, 111, 55))
         font = QtGui.QFont()
         font.setPointSize(8)
         self.enter.setFont(font)
@@ -948,6 +948,27 @@ class Ui_MainWindow(object):
         self.label.setFont(font)
         self.label.setStyleSheet("color: rgb(211, 84, 0)")
         self.label.setObjectName("label")
+        self.caps = QtWidgets.QPushButton(self.centralwidget)
+        self.caps.setGeometry(QtCore.QRect(30, 280, 61, 55))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.caps.setFont(font)
+        self.caps.setStyleSheet("QPushButton {\n"
+"    border: 1px solid #d35400;\n"
+"    color: #d35400;\n"
+"    border-radius: 20%\n"
+"}\n"
+"\n"
+"QPushButton:checked {\n"
+"   background-color: #d35400;\n"
+"    border: 1px solid #d35400;\n"
+"   border-radius: 20%;\n"
+"    color: #ffffff\n"
+"}\n"
+"")
+        self.caps.setCheckable(True)
+        self.caps.setChecked(False)
+        self.caps.setObjectName("caps")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
@@ -1002,4 +1023,5 @@ class Ui_MainWindow(object):
         self.Key4.setText(_translate("MainWindow", "4"))
         self.enter.setText(_translate("MainWindow", "ENTER"))
         self.label.setText(_translate("MainWindow", "Enter User Name:"))
+        self.caps.setText(_translate("MainWindow", "CAPS"))
 

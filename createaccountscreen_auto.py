@@ -7,6 +7,8 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import ClickableLineEdit
+
 
 class Ui_createAccountScreen(object):
     def setupUi(self, createAccountScreen):
@@ -38,7 +40,7 @@ class Ui_createAccountScreen(object):
 "    color: rgb(128, 128, 128);\n"
 "}")
         self.label.setObjectName("label")
-        self.txteditFirstName = QtWidgets.QLineEdit(self.centralwidget)
+        self.txteditFirstName = ClickableLineEdit.ClickableLineEdit(self.centralwidget)
         self.txteditFirstName.setGeometry(QtCore.QRect(390, 150, 181, 21))
         self.txteditFirstName.setStyleSheet("QLineEdit {\n"
 "    border-bottom: 1px solid #d35400;\n"
@@ -52,7 +54,7 @@ class Ui_createAccountScreen(object):
         self.txteditFirstName.setFrame(True)
         self.txteditFirstName.setEchoMode(QtWidgets.QLineEdit.Normal)
         self.txteditFirstName.setObjectName("txteditFirstName")
-        self.txteditLastName = QtWidgets.QLineEdit(self.centralwidget)
+        self.txteditLastName = ClickableLineEdit.ClickableLineEdit(self.centralwidget)
         self.txteditLastName.setGeometry(QtCore.QRect(390, 190, 181, 21))
         self.txteditLastName.setStyleSheet("QLineEdit {\n"
 "    border-bottom: 1px solid #d35400;\n"
@@ -63,7 +65,7 @@ class Ui_createAccountScreen(object):
 "    color: rgb(128, 128, 128);\n"
 "}")
         self.txteditLastName.setObjectName("txteditLastName")
-        self.txteditSSN = QtWidgets.QLineEdit(self.centralwidget)
+        self.txteditSSN = ClickableLineEdit.ClickableLineEdit(self.centralwidget)
         self.txteditSSN.setGeometry(QtCore.QRect(390, 310, 181, 21))
         self.txteditSSN.setStyleSheet("QLineEdit {\n"
 "    border-bottom: 1px solid #d35400;\n"
@@ -74,7 +76,7 @@ class Ui_createAccountScreen(object):
 "    color: rgb(128, 128, 128);\n"
 "}")
         self.txteditSSN.setObjectName("txteditSSN")
-        self.txteditUserName = QtWidgets.QLineEdit(self.centralwidget)
+        self.txteditUserName = ClickableLineEdit.ClickableLineEdit(self.centralwidget)
         self.txteditUserName.setGeometry(QtCore.QRect(390, 230, 181, 21))
         self.txteditUserName.setStyleSheet("QLineEdit {\n"
 "    border-bottom: 1px solid #d35400;\n"
@@ -85,7 +87,7 @@ class Ui_createAccountScreen(object):
 "    color: rgb(128, 128, 128);\n"
 "}")
         self.txteditUserName.setObjectName("txteditUserName")
-        self.txteditPassword = QtWidgets.QLineEdit(self.centralwidget)
+        self.txteditPassword = ClickableLineEdit.ClickableLineEdit(self.centralwidget)
         self.txteditPassword.setGeometry(QtCore.QRect(390, 270, 181, 21))
         self.txteditPassword.setStyleSheet("QLineEdit {\n"
 "    border-bottom: 1px solid #d35400;\n"

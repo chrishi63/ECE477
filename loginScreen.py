@@ -16,6 +16,7 @@ class LoginScreen(QMainWindow, loginUi.Ui_MainWindow):
         self.txteditUserName.clicked.connect(self.getUserNameInput)
         self.txteditUserName.textChanged.connect(self.updatePbEnable)
         self.txteditPassword.textChanged.connect(self.updatePbEnable)
+        self.txteditPassword.clicked.connect(self.getPassword)
     def updatePbEnable(self):
         if len(self.txteditUserName.text()) * len(self.txteditPassword.text()) > 0:
             self.pbLogin.setEnabled(True)
@@ -23,9 +24,13 @@ class LoginScreen(QMainWindow, loginUi.Ui_MainWindow):
             self.pbLogin.setEnabled(False)
     def getUserNameInput(self):
         newKeyboard = keyboard.Keyboard()
+        newKeyboard.parent = self.txteditUserName
         newKeyboard.show()
-        
-        newKeyboard.exec_()
+        #newKeyboard.exec_()
+    def getPassword(self):
+        newKeyboard = keyboard.Keyboard()
+        newKeyboard.parent = self.txteditPassword
+        newKeyboard.show()
     def setUserNameInput(self, userName):
         self.txteditUserName.setText(userName)
         
