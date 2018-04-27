@@ -106,32 +106,26 @@ Would you like to proceed?"
         if self.label_2.text() is not "":
             print("Heart rate already exisits")
             if self.userChoosesToOverrideHeartRateData():
-                self.messageText.setText("Measuring Heart Rate")
                 self.measureHeartRate()
         else:
             print("Measuring Heart Rate")
-            self.messageText.setText("Measuring Heart Rate")
             self.measureHeartRate()
             
     ############################################################################################
     def checkBodyTemperatureData(self):
         if self.label_4.text() is not "":
             if self.userChoosesToOverrideBodyTemperatureData():
-                self.messageText.setText("Measuring Body Temp")
                 self.measureBodyTemperature()
         else:
             self.measureBodyTemperature()
-            self.messageText.setText("Measuring Body Temp")
             
     ############################################################################################
     def checkGalvanicSkinResponseData(self):
         if self.label_3.text() is not "":
             if self.userChoosesToOverrideGSRData():
-                self.messageText.setText("Measuring GSR")
                 self.measureGalvanicSkinResponse()
         else:
             self.measureGalvanicSkinResponse()
-            self.messageText.setText("Measuring GSR")
             
             
     ############################################################################################
@@ -143,9 +137,9 @@ Would you like to proceed?"
         else:
             print("Disabling pushbuttons and measuring heart rate")
             self.disablePushButtons()
-            #GPIO.output(rPin, GPIO.LOW)
-            #GPIO.output(bPin, GPIO.LOW)
-            #GPIO.output(gPin, GPIO.HIGH)
+            GPIO.output(rPin, GPIO.LOW)
+            GPIO.output(bPin, GPIO.LOW)
+            GPIO.output(gPin, GPIO.HIGH)
             connection = stm.stmConnection()
             try:
                 self.connection.signalSensorToSTM(self.heartRateSignal)
@@ -160,9 +154,9 @@ Would you like to proceed?"
             self.label_4.setText(str(self.bodyTemp))
         else:
             self.disablePushButtons()
-            #GPIO.output(rPin, GPIO.LOW)
-            #GPIO.output(bPin, GPIO.HIGH)
-            #GPIO.output(gPin, GPIO.LOW)
+            GPIO.output(rPin, GPIO.LOW)
+            GPIO.output(bPin, GPIO.HIGH)
+            GPIO.output(gPin, GPIO.LOW)
             #self.connection.getTemperature()
             try:
                 self.connection.signalSensorToSTM(self.bodyTempSignal)
@@ -176,9 +170,9 @@ Would you like to proceed?"
             self.gsr = self.gsr + 1
         else:
             self.disablePushButtons()
-            #GPIO.output(rPin, GPIO.HIGH)
-            #GPIO.output(bPin, GPIO.HIGH)
-            #GPIO.output(gPin, GPIO.LOW)
+            GPIO.output(rPin, GPIO.HIGH)
+            GPIO.output(bPin, GPIO.HIGH)
+            GPIO.output(gPin, GPIO.LOW)
             try:
                 self.connection.signalSensorToSTM(self.gsrSignal)
                 QTimer.singleShot(5000,self.getGSRFromSTM)
@@ -205,7 +199,7 @@ Would you like to proceed?"
         
     ############################################################################################
     def disablePushButtons(self):
-        
+        self.connection.stopRequestingBatteryData = 1
         self.pbSendData.setEnabled(False)
         self.pbHeartRate.setEnabled(False)
         self.pbGSR.setEnabled(False)
@@ -213,9 +207,9 @@ Would you like to proceed?"
         
     ############################################################################################
     def updateGUIAfterDataReceived(self):
-        #GPIO.output(rPin, GPIO.LOW)
-        #GPIO.output(bPin, GPIO.LOW)
-        #GPIO.output(gPin, GPIO.LOW)
+        GPIO.output(rPin, GPIO.LOW)
+        GPIO.output(bPin, GPIO.LOW)
+        GPIO.output(gPin, GPIO.LOW)
         self.messageText.setText("")
         self.pbHeartRate.setEnabled(True)
         self.pbGSR.setEnabled(True)

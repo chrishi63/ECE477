@@ -13,7 +13,6 @@ class stmConnection():
         if sensor is not 4:
             print("Requesting data from sensor #")
             print(sensor)
-            self.stopRequestingBatteryData = 1
             self.sensorSignal = sensor
             try:
                 bus.write_byte(deviceAddress, sensor)
@@ -55,16 +54,17 @@ class stmConnection():
             try:
                 top = bus.read_byte(deviceAddress)
                 bot = bus.read_byte(deviceAddress)
-                tempVal = float(top+(bot/100))
-                if(tempVal >= 26.48) and (tempVal <= 26.99):
-                    tempVal += 10
-                elif(tempVal >= 27) and (tempVal <= 27.99):
-                    tempVal += 9
-                elif(tempVal >= 28) and (tempVal <= 28.99):
-                    tempVal += 8
-                    #print(tempVal)
-                tempVal = float(round(tempVal,2))
-                return tempVal
+                #tempVal = float(top+(bot/100))
+                #if(tempVal >= 26.48) and (tempVal <= 26.99):
+                 #   tempVal += 10
+                #elif(tempVal >= 27) and (tempVal <= 27.99):
+                #    tempVal += 9
+                #elif(tempVal >= 28) and (tempVal <= 28.99):
+                #    tempVal += 8
+                #    #print(tempVal)
+                #tempVal = float(round(tempVal,2))
+                #return tempVal
+                return str(top) + '.' + str(bot)
             except:
                 print("STM Read Error 1")
                 return False

@@ -26,18 +26,13 @@ def getTemperature(address):
     bot = readDataByteFromI2C(deviceAddress)
     #print(top)
     #print(bot/100)
-    tempVal = float(top+(bot/100))
-    if(tempVal >= 26.48) and (tempVal <= 26.99):
-        tempVal += 10
-    elif(tempVal >= 27) and (tempVal <= 27.99):
-        tempVal += 9
-    elif(tempVal >= 28) and (tempVal <= 28.99):
-        tempVal += 8
+    #tempVal = float(top+(bot/100))
+    
     #print(tempVal)
-    tempVal = str(round(tempVal,2))
+    #tempVal = str(round(tempVal,2))
     #print(type(tempVal))
-    #return str(top) + '.' + str(bot)
-    return tempVal
+    return str(top) + '.' + str(bot)
+    #return tempVal
     
 
 def getGSC(address):
@@ -104,10 +99,10 @@ if __name__ == "__main__":
     #        wait_2()
     #        print("Error occured earlier")
     #        print(getTemperature(deviceAddress))
-    print(str(getBatteryVoltage(deviceAddress)) + '%')
+    #print(str(getBatteryVoltage(deviceAddress)) + '%')
     #print(wait_2())
-    #print(getTemperature(deviceAddress))
-    #print(getGSC(deviceAddress))
+   # print(getTemperature(deviceAddress))
+    print(getGSC(deviceAddress))
     #print(getPulse(deviceAddress))
     #sendDataByteThroughI2c()
     #Wait 15 seconds

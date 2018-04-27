@@ -177,6 +177,7 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
 ##################################################################
 def main():
     app = QApplication(sys.argv)
+    app.setOverrideCursor(Qt.BlankCursor)
     form = MainScreen()
     timer = QTimer()
     timer.timeout.connect(form.requestBatteryData)
