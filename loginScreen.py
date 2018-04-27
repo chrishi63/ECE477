@@ -5,6 +5,7 @@ import PyQt5
 from PyQt5.QtWidgets import *
 
 import loginscreen_auto as loginUi
+import keyboard as keyboard
 
 class LoginScreen(QMainWindow, loginUi.Ui_MainWindow):
     def __init__(self):
@@ -12,6 +13,7 @@ class LoginScreen(QMainWindow, loginUi.Ui_MainWindow):
         self.setupUi(self)
         self.txteditPassword.setEchoMode(QLineEdit.Password)
         self.pbLogin.setEnabled(False)
+        self.txteditUserName.clicked.connect(self.openKeyboard)
         self.txteditUserName.textChanged.connect(self.updatePbEnable)
         self.txteditPassword.textChanged.connect(self.updatePbEnable)
     def updatePbEnable(self):
@@ -19,7 +21,10 @@ class LoginScreen(QMainWindow, loginUi.Ui_MainWindow):
             self.pbLogin.setEnabled(True)
         else:
             self.pbLogin.setEnabled(False)
-            
+    def openKeyboard(self):
+        newKeyboard = keyboard.Keyboard()
+        newKeyboard.show()
+        
 def main():
     app = QApplication(sys.argv)
     form = LoginScreen()

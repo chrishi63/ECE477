@@ -7,6 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import ClickableLineEdit
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -16,7 +17,7 @@ class Ui_MainWindow(object):
 "")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.txteditUserName = QtWidgets.QLineEdit(self.centralwidget)
+        self.txteditUserName = ClickableLineEdit.ClickableLineEdit(self.centralwidget)
         self.txteditUserName.setGeometry(QtCore.QRect(350, 230, 181, 21))
         self.txteditUserName.setStyleSheet("QLineEdit {\n"
 "    border-bottom: 1px solid #d35400;\n"
@@ -36,7 +37,7 @@ class Ui_MainWindow(object):
 "    color: rgb(128, 128, 128);\n"
 "}")
         self.label.setObjectName("label")
-        self.txteditPassword = QtWidgets.QLineEdit(self.centralwidget)
+        self.txteditPassword = ClickableLineEdit.ClickableLineEdit(self.centralwidget)
         self.txteditPassword.setGeometry(QtCore.QRect(350, 290, 181, 21))
         self.txteditPassword.setStyleSheet("QLineEdit {\n"
 "    border-bottom: 1px solid #d35400;\n"
