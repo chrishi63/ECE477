@@ -34,14 +34,17 @@ class CreateAccountScreen(QMainWindow, createAccountUi.Ui_createAccountScreen):
     def getFirstName(self):
         newKeyboard = keyboard.Keyboard()
         newKeyboard.parent = self.txteditFirstName
+        newKeyboard.label.setText("Enter First Name")
         newKeyboard.show()
     def getLastName(self):
         newKeyboard = keyboard.Keyboard()
         newKeyboard.parent = self.txteditLastName
+        newKeyboard.label.setText("Enter Last Name")
         newKeyboard.show()
     def getSSN(self):
         newKeyboard = keyboard.Keyboard()
         newKeyboard.parent = self.txteditSSN
+        newKeyboard.label.setText("Enter SSN")
         newKeyboard.show()
     def getUserName(self):
         newKeyboard = keyboard.Keyboard()
@@ -49,6 +52,8 @@ class CreateAccountScreen(QMainWindow, createAccountUi.Ui_createAccountScreen):
         newKeyboard.show()
     def getPassword(self):
         newKeyboard = keyboard.Keyboard()
+        newKeyboard.label.setText("Enter Password")
+        newKeyboard.lineEdit.setEchoMode(QLineEdit.Password)
         newKeyboard.parent = self.txteditPassword
         newKeyboard.show()
     

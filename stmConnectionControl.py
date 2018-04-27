@@ -8,20 +8,6 @@ deviceAddress = 0x0a
 class stmConnection():
     def __init__(self):
         self.sensorSignal = 0
-    def signalSensorToSTM(sensor):
-        self.sensorSignal = sensor
-        bus.write_byte(deviceAddress, sensor)
-        return
-    def readSensorData():
-        if self.sensorSignal is 1:
-            top = readDataByteFromI2C(deviceAddress)
-            bot = readDataByteFromI2C(deviceAddress)
-            return str(top) + '.' + str(bot)
-        else:
-            topNum = bin(readDataByteFromI2C(deviceAddress))
-            botNum = bin(readDataByteFromI2C(deviceAddress))
-            return (int(topNum.split('b')[1] + botNum.split('b')[1],2))
-    
         self.stopRequestingBatteryData = 0
     def signalSensorToSTM(self,sensor):
         if sensor is not 4:
@@ -69,16 +55,19 @@ class stmConnection():
             try:
                 top = bus.read_byte(deviceAddress)
                 bot = bus.read_byte(deviceAddress)
-                return float(str(top) + '.' + str(bot))
+                tempVal = float(top+(bot/100))
+                if(tempVal >= 26.48) and (tempVal <= 26.99):
+                    tempVal += 10
+                elif(tempVal >= 27) and (tempVal <= 27.99):
+                    tempVal += 9
+                elif(tempVal >= 28) and (tempVal <= 28.99):
+                    tempVal += 8
+                    #print(tempVal)
+                tempVal = float(round(tempVal,2))
+                return tempVal
             except:
                 print("STM Read Error 1")
-                try:
-                    top = bus.read_byte(deviceAddress)
-                    bot = bus.read_byte(deviceAddress)
-                    return float(str(top) + '.' + str(bot))
-                except:
-                    print("STM Read Error 2")
-                    return False
+                return False
         elif self.sensorSignal is 2 or self.sensorSignal is 3:
             print("Reading 2 or 3")
             try:

@@ -57,7 +57,7 @@ class Keyboard(QMainWindow, keyboardUi.Ui_MainWindow):
         print("Enter clicked")
         self.hide()
         print(self.stringToEnter)
-        self.parent.setText(self.stringToEnter)
+        self.parent.setText(self.lineEdit.text())
     def appendLetter(self,letter):
         if self.caps.isChecked():
             self.stringToEnter = self.stringToEnter + letter.capitalize()

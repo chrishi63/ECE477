@@ -121,6 +121,8 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
         print(self.dataCollectionScreen.connection.stopRequestingBatteryData)
         batteryLevel = self.dataCollectionScreen.batteryDataAvailable()
         if batteryLevel:
+            if batteryLevel>100:
+                batteryLevel = 100
             print(batteryLevel)
             self.updateBatteryIndicators(batteryLevel)
         else:
@@ -178,6 +180,7 @@ def main():
     form = MainScreen()
     timer = QTimer()
     timer.timeout.connect(form.requestBatteryData)
+    #timer.start(5000)
     timer.start(60000)
 ##    form.show()
     form.showFullScreen()

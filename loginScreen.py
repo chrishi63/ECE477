@@ -29,6 +29,8 @@ class LoginScreen(QMainWindow, loginUi.Ui_MainWindow):
         #newKeyboard.exec_()
     def getPassword(self):
         newKeyboard = keyboard.Keyboard()
+        newKeyboard.label.setText("Enter Password")
+        newKeyboard.lineEdit.setEchoMode(QLineEdit.Password)
         newKeyboard.parent = self.txteditPassword
         newKeyboard.show()
     def setUserNameInput(self, userName):

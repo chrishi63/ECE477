@@ -24,7 +24,20 @@ def getTemperature(address):
     sendDataByteThroughI2C(deviceAddress, 1)
     top = readDataByteFromI2C(deviceAddress)
     bot = readDataByteFromI2C(deviceAddress)
-    return str(top) + '.' + str(bot)
+    #print(top)
+    #print(bot/100)
+    tempVal = float(top+(bot/100))
+    if(tempVal >= 26.48) and (tempVal <= 26.99):
+        tempVal += 10
+    elif(tempVal >= 27) and (tempVal <= 27.99):
+        tempVal += 9
+    elif(tempVal >= 28) and (tempVal <= 28.99):
+        tempVal += 8
+    #print(tempVal)
+    tempVal = str(round(tempVal,2))
+    #print(type(tempVal))
+    #return str(top) + '.' + str(bot)
+    return tempVal
     
 
 def getGSC(address):
@@ -48,8 +61,8 @@ def getBatteryVoltage(address):
     topNum = bin(readDataByteFromI2C(deviceAddress))
     botNum = bin(readDataByteFromI2C(deviceAddress))
     newNum = int('0b' + topNum.split('b')[1] + botNum.split('b')[1][0:3],2)
+    #print(newNum)
     floatNum = round(((.00976 * newNum) / 7) * 100)
-    print(str(floatNum) + '%')
     return floatNum
 
 def wait_10():
@@ -91,9 +104,9 @@ if __name__ == "__main__":
     #        wait_2()
     #        print("Error occured earlier")
     #        print(getTemperature(deviceAddress))
-    #getBatteryVoltage(deviceAddress)
+    print(str(getBatteryVoltage(deviceAddress)) + '%')
     #print(wait_2())
-    print(getTemperature(deviceAddress))
+    #print(getTemperature(deviceAddress))
     #print(getGSC(deviceAddress))
     #print(getPulse(deviceAddress))
     #sendDataByteThroughI2c()

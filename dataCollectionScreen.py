@@ -2,14 +2,23 @@
 import sys
 import time
 
+rPin = 29
+bPin = 33
+gPin = 13
+
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(rPin, GPIO.OUT)
+GPIO.setup(bPin, GPIO.OUT)
+GPIO.setup(gPin, GPIO.OUT)
+
 import PyQt5
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import QTimer
 import datacollection_auto as dataUi
 import serverConnectionController as server
 import stmConnectionControl as stm
-import stmTest
->>>>>>> 9b24ea841bb8b7b006a08b560fcb8cadaa58a0c0
+
 
 class DataCollectionScreen(QMainWindow, dataUi.Ui_DataCollection):
     ############################################################################################
@@ -93,11 +102,14 @@ Would you like to proceed?"
     
     ############################################################################################
     def checkStoredHeartRateData(self):
+        print("Checking Heart Rate")
         if self.label_2.text() is not "":
+            print("Heart rate already exisits")
             if self.userChoosesToOverrideHeartRateData():
                 self.messageText.setText("Measuring Heart Rate")
                 self.measureHeartRate()
         else:
+            print("Measuring Heart Rate")
             self.messageText.setText("Measuring Heart Rate")
             self.measureHeartRate()
             
@@ -129,10 +141,17 @@ Would you like to proceed?"
             self.heartRate = self.heartRate + 1
             self.label_2.setText(str(self.heartRate))
         else:
+            print("Disabling pushbuttons and measuring heart rate")
             self.disablePushButtons()
+            #GPIO.output(rPin, GPIO.LOW)
+            #GPIO.output(bPin, GPIO.LOW)
+            #GPIO.output(gPin, GPIO.HIGH)
             connection = stm.stmConnection()
-            self.connection.signalSensorToSTM(self.heartRateSignal)
-            QTimer.singleShot(10000,self.getHeartRateFromSTM)
+            try:
+                self.connection.signalSensorToSTM(self.heartRateSignal)
+                QTimer.singleShot(10000,self.getHeartRateFromSTM)
+            except:
+                self.updateGUIAfterDataReceived()
             
     ############################################################################################
     def measureBodyTemperature(self):
@@ -141,9 +160,15 @@ Would you like to proceed?"
             self.label_4.setText(str(self.bodyTemp))
         else:
             self.disablePushButtons()
+            #GPIO.output(rPin, GPIO.LOW)
+            #GPIO.output(bPin, GPIO.HIGH)
+            #GPIO.output(gPin, GPIO.LOW)
             #self.connection.getTemperature()
-            self.connection.signalSensorToSTM(self.bodyTempSignal)
-            QTimer.singleShot(5000,self.getBodyTempFromSTM)
+            try:
+                self.connection.signalSensorToSTM(self.bodyTempSignal)
+                QTimer.singleShot(5000,self.getBodyTempFromSTM)
+            except:
+                self.updateGUIAfterDataReceived()
         
     ############################################################################################
     def measureGalvanicSkinResponse(self):
@@ -151,8 +176,14 @@ Would you like to proceed?"
             self.gsr = self.gsr + 1
         else:
             self.disablePushButtons()
-            self.connection.signalSensorToSTM(self.gsrSignal)
-            QTimer.singleShot(5000,self.getGSRFromSTM)
+            #GPIO.output(rPin, GPIO.HIGH)
+            #GPIO.output(bPin, GPIO.HIGH)
+            #GPIO.output(gPin, GPIO.LOW)
+            try:
+                self.connection.signalSensorToSTM(self.gsrSignal)
+                QTimer.singleShot(5000,self.getGSRFromSTM)
+            except:
+                self.updateGUIAfterDataReceived()
             #QTimer.singleShot(10000,self.getGSRFromSTM)
         
     ############################################################################################
@@ -165,6 +196,7 @@ Would you like to proceed?"
         self.connection.signalSensorToSTM(self.heartRateSignal)
         self.heartRate = self.connection.readSensorData()
         self.updateGUIAfterDataReceived()
+        
     ############################################################################################
     def getGSRFromSTM(self):
         self.connection.signalSensorToSTM(self.gsrSignal)
@@ -173,6 +205,7 @@ Would you like to proceed?"
         
     ############################################################################################
     def disablePushButtons(self):
+        
         self.pbSendData.setEnabled(False)
         self.pbHeartRate.setEnabled(False)
         self.pbGSR.setEnabled(False)
@@ -180,6 +213,9 @@ Would you like to proceed?"
         
     ############################################################################################
     def updateGUIAfterDataReceived(self):
+        #GPIO.output(rPin, GPIO.LOW)
+        #GPIO.output(bPin, GPIO.LOW)
+        #GPIO.output(gPin, GPIO.LOW)
         self.messageText.setText("")
         self.pbHeartRate.setEnabled(True)
         self.pbGSR.setEnabled(True)
