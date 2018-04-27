@@ -6,6 +6,7 @@ datacollection.h
 datacollection.ui
 footer.png
 header.qrc
+keyboard.ui
 loginscreen.cpp
 loginscreen.h
 loginscreen.ui

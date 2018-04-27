@@ -6,5 +6,7 @@
         <file>logo.png</file>
         <file>backArrowNew.png</file>
         <file>brandNameNew.png</file>
+        <file>Keyboard.qml</file>
+        <file>KeyboardForm.ui.qml</file>
     </qresource>
 </RCC>
