@@ -40,11 +40,12 @@ for (full_name, user_name, heart, temp, sweat) in cur:
 #               "(email, password, nameTag, client, server)"
 #"VALUES ('abc@purdue.edu', 'abcdef234','abc2491','test16','test29');")
 
-newquery = ("SELECT CURDATE();")
+newquery = ("SELECT DATE_SUB(NOW(), INTERVAL 5 HOUR);")
+#newquery = ("SELECT CURDATE();")
 #cur.execute(insertquery)
 cur.execute(newquery)
 for value in cur:
-   print(value[0])
+   print(str(value[0]).split()[0])
 
 #cnx.commit()
 cur.close()

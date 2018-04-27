@@ -19,6 +19,7 @@ def readDataByteFromI2C(address):
     return bus.read_byte(address)
 
 def getTemperature(address):
+    sendDataByteThroughI2C(deviceAddress, 1)
     wait_5()
     sendDataByteThroughI2C(deviceAddress, 1)
     top = readDataByteFromI2C(deviceAddress)
@@ -27,6 +28,8 @@ def getTemperature(address):
     
 
 def getGSC(address):
+    sendDataByteThroughI2C(deviceAddress, 2)
+    wait_5()
     sendDataByteThroughI2C(deviceAddress, 2)
     topNum = bin(readDataByteFromI2C(deviceAddress))
     botNum = bin(readDataByteFromI2C(deviceAddress))
@@ -39,6 +42,15 @@ def getPulse(address):
     topNum = bin(readDataByteFromI2C(deviceAddress))
     botNum = bin(readDataByteFromI2C(deviceAddress))
     return (int(topNum.split('b')[1] + botNum.split('b')[1],2))
+
+def getBatteryVoltage(address):
+    sendDataByteThroughI2C(deviceAddress, 4)
+    topNum = bin(readDataByteFromI2C(deviceAddress))
+    botNum = bin(readDataByteFromI2C(deviceAddress))
+    newNum = int('0b' + topNum.split('b')[1] + botNum.split('b')[1][0:3],2)
+    floatNum = round(((.00976 * newNum) / 7) * 100)
+    print(str(floatNum) + '%')
+    return floatNum
 
 def wait_10():
     timer_a = time.time()
@@ -73,14 +85,15 @@ def wait_2():
 ############################################################################################
 if __name__ == "__main__":
     deviceAddress = 0x0a
-    try:
-        print(getTemperature(deviceAddress))
-    except:
-            wait_2()
-            print("Error occured earlier")
-            print(getTemperature(deviceAddress))
+    #try:
+    #    print(getTemperature(deviceAddress))
+    #except:
+    #        wait_2()
+    #        print("Error occured earlier")
+    #        print(getTemperature(deviceAddress))
+    #getBatteryVoltage(deviceAddress)
     #print(wait_2())
-    #print(getTemperature(deviceAddress))
+    print(getTemperature(deviceAddress))
     #print(getGSC(deviceAddress))
     #print(getPulse(deviceAddress))
     #sendDataByteThroughI2c()

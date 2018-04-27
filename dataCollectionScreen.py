@@ -7,12 +7,14 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import QTimer
 import datacollection_auto as dataUi
 import serverConnectionController as server
-import stmConnectionController as stm
+import stmConnectionControl as stm
+import stmTest
+>>>>>>> 9b24ea841bb8b7b006a08b560fcb8cadaa58a0c0
 
 class DataCollectionScreen(QMainWindow, dataUi.Ui_DataCollection):
     ############################################################################################
     def clearData(self):
-        self.heartRate = 0
+        self.heartRate = -1
         self.gsr = 0
         self.bodyTemp = 0
         self.label_2.setText("")
@@ -103,9 +105,11 @@ Would you like to proceed?"
     def checkBodyTemperatureData(self):
         if self.label_4.text() is not "":
             if self.userChoosesToOverrideBodyTemperatureData():
+                self.messageText.setText("Measuring Body Temp")
                 self.measureBodyTemperature()
         else:
             self.measureBodyTemperature()
+            self.messageText.setText("Measuring Body Temp")
             
     ############################################################################################
     def checkGalvanicSkinResponseData(self):
@@ -117,8 +121,10 @@ Would you like to proceed?"
             self.measureGalvanicSkinResponse()
             self.messageText.setText("Measuring GSR")
             
+            
     ############################################################################################
     def measureHeartRate(self):
+        self.messageText.setText("Measuring Heart Rate")
         if self.stmAddressByte is 0:
             self.heartRate = self.heartRate + 1
             self.label_2.setText(str(self.heartRate))
@@ -135,6 +141,8 @@ Would you like to proceed?"
             self.label_4.setText(str(self.bodyTemp))
         else:
             self.disablePushButtons()
+            #self.connection.getTemperature()
+            self.connection.signalSensorToSTM(self.bodyTempSignal)
             QTimer.singleShot(5000,self.getBodyTempFromSTM)
         
     ############################################################################################
@@ -144,7 +152,7 @@ Would you like to proceed?"
         else:
             self.disablePushButtons()
             self.connection.signalSensorToSTM(self.gsrSignal)
-            self.getGSRFromSTM()
+            QTimer.singleShot(5000,self.getGSRFromSTM)
             #QTimer.singleShot(10000,self.getGSRFromSTM)
         
     ############################################################################################
@@ -154,10 +162,12 @@ Would you like to proceed?"
         self.updateGUIAfterDataReceived()
     ############################################################################################
     def getHeartRateFromSTM(self):
+        self.connection.signalSensorToSTM(self.heartRateSignal)
         self.heartRate = self.connection.readSensorData()
         self.updateGUIAfterDataReceived()
     ############################################################################################
     def getGSRFromSTM(self):
+        self.connection.signalSensorToSTM(self.gsrSignal)
         self.gsr = self.connection.readSensorData()
         self.updateGUIAfterDataReceived()
         
@@ -179,10 +189,10 @@ Would you like to proceed?"
         if self.bodyTemp > 0:
             print(self.bodyTemp)
             self.label_4.setText(str(self.bodyTemp))
-        if self.heartRate > 0:
+        if self.heartRate > -1:
             self.label_2.setText(str(self.heartRate))
         self.updatePbEnable()
-        self.connection.resumeCollectingBatteryData()
+        self.connection.stopCollectingBatteryData = 0
         
     ############################################################################################
     def updatePbEnable(self):
@@ -194,9 +204,13 @@ Would you like to proceed?"
     ############################################################################################      
     def batteryDataAvailable(self):
         if self.connection.stopRequestingBatteryData is 1:
+            print("Data collection screen - cannot request battery data")
             return False
         else:
+            print("Data collection screen requesting battery data")
             self.connection.signalSensorToSTM(self.batterySignal)
+            print(self.connection.sensorSignal)
+            print("Data COllection Screen reading battery Data")
             self.batteryLevel = self.connection.readSensorData()
             return self.batteryLevel
         
@@ -204,7 +218,7 @@ Would you like to proceed?"
     def __init__(self):
         super(self.__class__, self).__init__()
         self.setupUi(self)
-        self.heartRate = 0
+        self.heartRate = -1
         self.gsr = 0
         self.bodyTemp = 0
         self.batterySignal = 4

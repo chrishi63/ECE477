@@ -17,21 +17,21 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
 ##################################################################
     def createNewAccount(self):
         #takes user to new account screen
-##        self.createAccount.showFullScreen()
+        self.createAccount.showFullScreen()
         print("navigating to new account screen")
-        self.createAccount.show()
+##        self.createAccount.show()
         self.hide()
 ##################################################################  
     def hideCreateScreen(self):
-##        self.showFullScreen()
-        self.show()
+        self.showFullScreen()
+##        self.show()
         self.createAccount.hide()
 ##################################################################
     def login(self):
         #takes user to login screen
-##        self.loginScreen.showFullScreen()
+        self.loginScreen.showFullScreen()
         print("navigating to login  screen")
-        self.loginScreen.show()
+##        self.loginScreen.show()
         self.hide()
 ##################################################################
     def attemptLogin(self):
@@ -80,13 +80,13 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
 ##################################################################
     def hideLoginScreen(self):
         print("hide login")
-##        self.showFullScreen()
-        self.show()
+        self.showFullScreen()
+##        self.show()
         self.loginScreen.hide()
 ##################################################################
     def showDataCollectionScreen(self):
-##        self.dataCollectionScreen.showFullScreen()
-        self.dataCollectionScreen.show()
+        self.dataCollectionScreen.showFullScreen()
+##        self.dataCollectionScreen.show()
         self.loginScreen.hide()
         self.loginScreen.txteditUserName.setText("")
         self.loginScreen.txteditPassword.setText("")
@@ -117,10 +117,14 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
         else:
             return 1
     def requestBatteryData(self):
+        print("Main screen request battery data function")
+        print(self.dataCollectionScreen.connection.stopRequestingBatteryData)
         batteryLevel = self.dataCollectionScreen.batteryDataAvailable()
         if batteryLevel:
             print(batteryLevel)
             self.updateBatteryIndicators(batteryLevel)
+        else:
+            print("no battery data available")
     def updateBatteryIndicators(self, batteryLevel):
         self.batteryIndicator.setValue(batteryLevel)
         self.loginScreen.batteryIndicator.setValue(batteryLevel)
@@ -129,8 +133,8 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
         
 ##################################################################                                                             
     def hideDataCollectionScreen(self):
-##        self.showFullScreen()
-        self.show()
+        self.showFullScreen()
+##        self.show()
         self.dataCollectionScreen.clearData()
         self.dataCollectionScreen.hide()
 ##################################################################
@@ -145,6 +149,10 @@ class MainScreen(QMainWindow, mainscreen_auto.Ui_MainScreen):
         self.dataCollectionScreen = dataCollection.DataCollectionScreen()
 
         # Change battery
+        self.batteryIndicator.setValue(95)
+        self.loginScreen.batteryIndicator.setValue(95)
+        self.dataCollectionScreen.batteryIndicator.setValue(95)
+        self.createAccount.progressBar.setValue(95)
         #self.batteryIndicator.setValue(batteryLevel)
         #self.loginScreen.batteryIndicator.setValue(batteryLevel)
         #self.dataCollectionScreen.batteryIndicator.setValue(batteryLevel)
@@ -170,9 +178,9 @@ def main():
     form = MainScreen()
     timer = QTimer()
     timer.timeout.connect(form.requestBatteryData)
-    timer.start(300000)
-    form.show()
-##    form.showFullScreen()
+    timer.start(60000)
+##    form.show()
+    form.showFullScreen()
     sys.exit(app.exec_())
 ##################################################################
 if __name__ == "__main__":
