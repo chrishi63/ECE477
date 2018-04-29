@@ -99,10 +99,10 @@ if __name__ == "__main__":
     #        wait_2()
     #        print("Error occured earlier")
     #        print(getTemperature(deviceAddress))
-    #print(str(getBatteryVoltage(deviceAddress)) + '%')
+    print(str(getBatteryVoltage(deviceAddress)) + '%')
     #print(wait_2())
    # print(getTemperature(deviceAddress))
-    print(getGSC(deviceAddress))
+    #print(getGSC(deviceAddress))
     #print(getPulse(deviceAddress))
     #sendDataByteThroughI2c()
     #Wait 15 seconds

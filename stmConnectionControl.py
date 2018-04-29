@@ -64,7 +64,7 @@ class stmConnection():
                 #    #print(tempVal)
                 #tempVal = float(round(tempVal,2))
                 #return tempVal
-                return str(top) + '.' + str(bot)
+                return float(str(top) + '.' + str(bot))
             except:
                 print("STM Read Error 1")
                 return False
